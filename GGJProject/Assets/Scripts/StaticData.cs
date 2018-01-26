@@ -46,8 +46,7 @@ public class StaticData : MonoBehaviour
         //PlayerRef = GameObject.FindGameObjectsWithTag("Player")[1];
         //PlayerInteract = PlayerRef.GetComponentInChildren<BaseInteractScript>();
         //TODO
-
-
+        DontDestroyOnLoad(this);
     }
 
     /// <summary>
