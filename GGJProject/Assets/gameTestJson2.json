@@ -1,0 +1,42 @@
+{
+	"Stories": 
+	{
+		{
+			"StoryName":"Tutorial",
+			"StoryID":0,
+			"Messages":
+			{
+				{
+					"Idh":1,
+					"Hpath":0,
+					"Msg":"AAAHHHHH! HELP! *Aagh, I...I* think I’ve lost something, I’m in too much pain, oh hell… Help! ",
+					"opts" 
+					{
+						{"opts": "Take a painkiller.", "effect":1, "path":1},
+						{"opts": "Keep calm and breath deeply.", "effect":0, "path";0},
+						{"opts": "Tell me what’s a happening!", "effect":1, "path":1}
+					}
+				},
+				{
+					"Idh":1,
+					"Hpath":1,
+					"Msg": "There’s a 1puddle of blood1 beneath me! I think I’m 2going2 to 1faint1. I can’t see anything through the 2fog2.",
+					"opts" {
+						{"opts": "Stop the bleeding with tight bandages.", "effect":1, "path":1} , 
+						{"opts": "Eat some sugar.", "effect":0, "path":0}, 
+						{"opts": "Use a flashlight and try to see.", "effect":1, "path":1}
+					}
+				},
+				{
+				"Idh":1,
+				"Hpath":0,
+				"Msg": "I feel very confused and dizzy… I think I’m going to faint.",
+				"opts" {
+					{"opts": "Are you bleeding?", "effect":1, "path":1} , 
+					{"opts": "Try to focus on my voice.", "effect":0, "path":0}, 
+					{"opts": "Are you hallucinating?", "effect":0, "path":0}
+				}
+			}
+		}
+	}
+}
