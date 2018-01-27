@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e26bf622a7a89459af9e29d6db2c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Este 1\xE91 um 1teste1 a 2ser2 2considerado2 3!3"
+  message: "Este [\xE9] um @teste@ a ]ser[ 2considerado2 3!3"
   result: 
 --- !u!114 &448803862
 MonoBehaviour:
