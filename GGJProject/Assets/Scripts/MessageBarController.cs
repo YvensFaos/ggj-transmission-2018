@@ -35,7 +35,7 @@ public class MessageBarController : MonoBehaviour {
     public float LowTimerCoef = 0.2f;
 
     //Reference to Image Component
-    private Image MessageTimerImage;
+    public Image MessageTimerImage;
 
     [Header("Events To Invoke")]
     public UnityEvent EventsListener;
