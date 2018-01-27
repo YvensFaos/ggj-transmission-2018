@@ -8,6 +8,7 @@ public enum GameOptionResult
     POSITIVE, NEUTER, NEGATIVE
 }
 
+[System.Serializable]
 public class GamePhraseOption
 {
     public string optionPhrase;
@@ -20,6 +21,7 @@ public class GamePhraseOption
     }
 }
 
+[System.Serializable]
 public class GameNode
 {
     public string phrase;
