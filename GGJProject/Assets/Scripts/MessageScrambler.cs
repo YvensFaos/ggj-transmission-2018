@@ -1,21 +1,20 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 
-public class MessageScrambler {
+public class MessageScrambler
+{
+    private const string NOISE = "~~~~";
 
-    const string NOISE = "~~~~";
-    
-    Dictionary<string, string> m_dict;
+    private Dictionary<string, string> noiseDictionary;
 
     /// <summary>
     /// Define the whole dictionary.
     /// </summary>
     /// <param name="dict">the defined dictionary</param>
-    public void DefDict (Dictionary<string, string> dict)
+    public void DefDict(Dictionary<string, string> dict)
     {
-        m_dict = dict;
+        noiseDictionary = dict;
     } // DefDict
 
     /// <summary>
@@ -25,12 +24,13 @@ public class MessageScrambler {
     /// <param name="code">the code to replace the word in the message.</param>
     public void SetDict(string word, string code)
     {
-        if (m_dict.ContainsKey(word))
+        if (noiseDictionary.ContainsKey(word))
         {
-            m_dict[word] = code;
-        } else
+            noiseDictionary[word] = code;
+        }
+        else
         {
-            m_dict.Add(word, code); 
+            noiseDictionary.Add(word, code);
         }
     } // SetDict
 
@@ -45,10 +45,10 @@ public class MessageScrambler {
         List<string> ret = new List<string>(words.Length);
         foreach (string word in words)
         {
-            ret.Add(m_dict.ContainsKey(word) ? m_dict[word] : word);
+            ret.Add(noiseDictionary.ContainsKey(word) ? noiseDictionary[word] : word);
         }
 
-        return String.Join(" ", ret.ToArray());
+        return string.Join(" ", ret.ToArray());
     } // ScrambleFromDict
 
     /// <summary>
@@ -57,7 +57,7 @@ public class MessageScrambler {
     /// <param name="message">the message to be encoded</param>
     /// <param name="count">the maximum count of words to be replaced</param>
     /// <returns>the encoded message</returns>
-    public string ScrambleRandomly(string message, int count)
+    public string ScrambleRandomly(string message, int count = 1)
     {
         string ret = message;
 
@@ -69,10 +69,10 @@ public class MessageScrambler {
             string right = ret.Substring(point, ret.Length - point);
             int last = left.LastIndexOf(' ');
             int first = right.IndexOf(' ');
-            ret = 
-                ( last < 0 ? "" : left.Substring(0, last + 1) ) 
-                + NOISE + 
-                ( first < 0 ? "" : right.Substring(first) )
+            ret =
+                (last < 0 ? "" : left.Substring(0, last + 1))
+                + NOISE +
+                (first < 0 ? "" : right.Substring(first))
             ;
             Debug.Log(ret);
         }
@@ -106,7 +106,9 @@ public class MessageScrambler {
                     indexesToRemove.Add(availableIndexes[randomIndex]);
                     availableIndexes.RemoveAt(randomIndex);
                 }
-            } else { 
+            }
+            else
+            {
                 phrasesPerGroup = words.Length;
                 for (int i = 0; i < words.Length; i++) indexesToRemove.Add(i);
             }
@@ -132,7 +134,7 @@ public class MessageScrambler {
     {
         List<char[]> delimiters = new List<char[]>
         {
-            new char[] { '[', ']' }, 
+            new char[] { '[', ']' },
             new char[] { '@' }
         };
 
@@ -140,11 +142,11 @@ public class MessageScrambler {
         foreach (char[] delimiter in delimiters)
         {
             string[] words = ExtractGroupedWords(message, delimiter);
-            foreach(string word in words)
+            foreach (string word in words)
             {
                 ret = ret.Replace(word, NOISE);
             }
-            foreach(char c in delimiter)
+            foreach (char c in delimiter)
             {
                 ret = ret.Replace(c.ToString(), "");
             }
@@ -176,15 +178,16 @@ public class MessageScrambler {
         string[] words = message.Split(sep);
         if (words.Length % 2 == 0)
         {
-            throw new Exception("The " + sep + " markings don't match right in " + message);
+            string exceptionMessage = "The " + sep + " markings don't match right in " + message;
+            StaticData.Instance.Log(exceptionMessage);
         }
 
         List<string> ret = new List<string>();
-        for (int i = 1; i < words.Length - 1; i+=2)
+        for (int i = 1; i < words.Length - 1; i += 2)
         {
             ret.Add(words[i]);
         }
 
         return ret.ToArray();
     } // ExtractGroupedWords
-} 
+}
