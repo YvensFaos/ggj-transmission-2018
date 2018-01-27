@@ -85,7 +85,7 @@ public class MessageScrambler {
     /// </summary>
     /// <param name="message">message to be encoded</param>
     /// <returns>the encoded message</returns>
-    public string ScrambleNumbered(string message)
+    public string ScrambleNumbered(string message, int phrasesPerGroup = 1)
     {
         string ret = message;
 
@@ -94,14 +94,32 @@ public class MessageScrambler {
             string[] words = ExtractGroupedWords(ret, c);
             if (words.Length == 0) continue;
 
-            int selectedWordIdx = UnityEngine.Random.Range(0, words.Length);
-            string selectedWord = words[selectedWordIdx];
-            Debug.Log("Selected word: " + selectedWord);
-            ret = ret.Replace(c.ToString(), "");
-            ret = ret.Replace(selectedWord, NOISE);
-            Debug.Log(ret);
+            // Choose the phrasesPerGroup random phrases to be coded.
+            List<int> indexesToRemove = new List<int>();
+            List<int> availableIndexes = new List<int>(words.Length);
+            for (int i = 0; i < words.Length; i++) availableIndexes.Add(i);
+            if (phrasesPerGroup < words.Length)
+            {
+                for (int i = 0; i < phrasesPerGroup; i++)
+                {
+                    int randomIndex = UnityEngine.Random.Range(0, availableIndexes.Count);
+                    indexesToRemove.Add(availableIndexes[randomIndex]);
+                    availableIndexes.RemoveAt(randomIndex);
+                }
+            } else { 
+                phrasesPerGroup = words.Length;
+                for (int i = 0; i < words.Length; i++) indexesToRemove.Add(i);
+            }
+
+            foreach (int indexToRemove in indexesToRemove)
+            {
+                string word = words[indexToRemove];
+                ret = ret.Replace(word, NOISE);
+                ret = ret.Replace(c.ToString(), "");
+            }
         }
 
+        Debug.Log(ret);
         return ret;
     } // ScrambleNumbered
 
