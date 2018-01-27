@@ -21,6 +21,14 @@ public class ScramblerTester : MonoBehaviour {
         });
     }
 
+    public void Test()
+    {
+        result =
+            //scrambler.ScrambleRandomly(message, 2);
+            //scrambler.ScrambleFromDict(message);
+            scrambler.ScrambleNumbered(message);
+    } // Test
+
     private void Start()
     {
         result = scrambler.ScrambleRandomly(message, 2);

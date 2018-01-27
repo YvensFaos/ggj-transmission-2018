@@ -42,7 +42,6 @@ public class MessageScrambler {
         for (int i = 0; i < count; i++)
         {
             int point = UnityEngine.Random.Range(0, ret.Length);
-            Debug.Log(point);
             if (message[point] == ' ') point++;
             string left = ret.Substring(0, point);
             string right = ret.Substring(point, ret.Length - point);
@@ -59,4 +58,49 @@ public class MessageScrambler {
         return ret;
     } // ScrambleRandomly
 
+    public string ScrambleNumbered(string message)
+    {
+        string ret = message;
+
+        for (char c = '1'; c <= '9'; c++)
+        {
+            string[] words;
+            try
+            {
+                words = ExtractGroupedWords(ret, c);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex.Message);
+                throw;
+            }
+            if (words.Length == 0) continue;
+
+            int selectedWordIdx = UnityEngine.Random.Range(0, words.Length);
+            string selectedWord = words[selectedWordIdx];
+            Debug.Log("Selected word: " + selectedWord);
+            ret = ret.Replace(c.ToString(), "");
+            ret = ret.Replace(selectedWord, "$$$$");
+            Debug.Log(ret);
+        }
+
+        return ret;
+    } // ScrambleNumbered
+
+    string[] ExtractGroupedWords(string message, char sep)
+    {
+        string[] words = message.Split(sep);
+        if (words.Length % 2 == 0)
+        {
+            throw new Exception("The " + sep + " markings don't match right in " + message);
+        }
+
+        List<string> ret = new List<string>();
+        for (int i = 1; i < words.Length - 1; i+=2)
+        {
+            ret.Add(words[i]);
+        }
+
+        return ret.ToArray();
+    } // ExtractGroupedWords
 } 
