@@ -45,6 +45,7 @@ public class StaticData : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        
     }
 
     private void Start()
@@ -53,6 +54,7 @@ public class StaticData : MonoBehaviour
         //PlayerInteract = PlayerRef.GetComponentInChildren<BaseInteractScript>();
         //TODO
         DontDestroyOnLoad(this);
+        Random.InitState(666);
     }
 
     /// <summary>
@@ -63,5 +65,18 @@ public class StaticData : MonoBehaviour
     {
         this.NextScene = NextScene;
         SceneManager.LoadScene("LoadingScreen");
+    }
+
+    /// <summary>
+    /// Método para printar uma frase no console da Unity.
+    /// Depende da variável DEBUG.
+    /// </summary>
+    /// <param name="debugPhrase"></param>
+    public void Log(string debugPhrase)
+    {
+        if(Instance.DEBUG)
+        {
+            Debug.Log(debugPhrase);
+        }
     }
 }
