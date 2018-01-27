@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+
+using UnityEngine;
 
 public enum GameOptionResult
 {
@@ -20,16 +23,47 @@ public class GamePhraseOption
 public class GameNode
 {
     public string phrase;
-    public List<GamePhraseOption> options;
+    public string scrambledPhrase;
+    public GamePhraseOption[] options;
+    public GameNode[] nodes;
 
-    public GameNode(string phrase, List<GamePhraseOption> options)
+    public GameNode(string phrase, GamePhraseOption[] options)
     {
         this.phrase = phrase;
-        this.options.AddRange(options);
+        this.options = new GamePhraseOption[options.Length];
+        for (int i = 0; i < options.Length; i++)
+        {
+            this.options[i] = options[i];
+        }
+
+        //TODO call scramble note
     }
 }
 
-public class GameGraph
+public class GameGraph : MonoBehaviour
 {
+    public GameNode rootNode;
+    public static string gameJsonFile = "gameTestJson.json";
 
+    private void Awake()
+    {
+        InitGameGraph();
+    }
+
+    private void InitGameGraph()
+    {
+        string path = Path.Combine(Application.dataPath, gameJsonFile);
+        StreamReader reader = new StreamReader(path);
+        string jsonString = reader.ReadToEnd();
+        JSONObject mainObject = new JSONObject(jsonString);
+
+        Stack<JSONObject> stackJson = new Stack<JSONObject>();
+        stackJson.Push(mainObject);
+        JSONObject pointer;
+        while (stackJson.Count > 0)
+        {
+            pointer = stackJson.Pop();
+            //TODO read json graph
+        }
+    }
 }

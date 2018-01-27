@@ -1,14 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CoreLogic : MonoBehaviour {
+public class CoreLogic : MonoBehaviour
+{
+    public GameGraph gameGraph;
 
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
+    private void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+
+    }
 }
