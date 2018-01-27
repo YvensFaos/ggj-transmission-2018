@@ -11,7 +11,13 @@ public class StaticData : MonoBehaviour
 
     public static StaticData Instance
     {
-        get { return instance; }
+        get {
+            if(instance == null)
+            {
+                instance = FindObjectOfType<GameObject>().AddComponent<StaticData>();
+            }
+            return instance;
+        }
     }
 
     /// <summary>
