@@ -234,8 +234,8 @@ GameObject:
   - component: {fileID: 592656479}
   - component: {fileID: 592656478}
   - component: {fileID: 592656477}
-  - component: {fileID: 592656481}
   - component: {fileID: 592656482}
+  - component: {fileID: 592656481}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -265,8 +265,8 @@ Camera:
   m_GameObject: {fileID: 592656476}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0.25735292, b: 0.66176474, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -312,15 +312,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 592656476}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: ab2fd0b11cfb2fb4ca4ed47adfcc3b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 1cf8dc8460e1547fa96b6c39459607c4, type: 2}
-  m_Camera: {fileID: 0}
-  m_PreviousProfile: {fileID: 0}
-  m_RenderingInSceneView: 0
+  Shader: {fileID: 4800000, guid: 9d7e8f87435780644abb4acdfd72a2f0, type: 3}
+  LookupTexture: {fileID: 0}
+  Amount: 1
+  TintColor: {r: 1, g: 0, b: 0, a: 1}
+  Hue: 0
+  Saturation: 0
+  Brightness: 0
+  Contrast: 0
+  Sharpness: 0
 --- !u!114 &592656482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,14 +826,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11451098, guid: d196e5cdbd3ed084fae774b62417bd3b, type: 2}
-      propertyPath: GForceVector.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11427604, guid: d196e5cdbd3ed084fae774b62417bd3b, type: 2}
-      propertyPath: GForceVector.y
-      value: -1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d196e5cdbd3ed084fae774b62417bd3b, type: 2}
   m_IsPrefabParent: 0
@@ -841,6 +838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071423395}
   - component: {fileID: 2071423393}
+  - component: {fileID: 2071423396}
   - component: {fileID: 2071423394}
   m_Layer: 0
   m_Name: SceneController
@@ -855,7 +853,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2071423392}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfa62bcf8f83f4e0499b833ee9a0560d, type: 3}
   m_Name: 
@@ -873,7 +871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frozenRain: {fileID: 753917843}
   windAudio: {fileID: 1126946749}
-  frozenValue: 0
+  frozenValue: 5.3
 --- !u!4 &2071423395
 Transform:
   m_ObjectHideFlags: 0
@@ -889,3 +887,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2071423396
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2071423392}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 587596aff219cfa4fb981d624ee95553, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
