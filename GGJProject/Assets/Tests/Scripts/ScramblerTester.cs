@@ -26,7 +26,8 @@ public class ScramblerTester : MonoBehaviour {
         result =
             //scrambler.ScrambleRandomly(message, 2);
             //scrambler.ScrambleFromDict(message);
-            scrambler.ScrambleNumbered(message);
+            //scrambler.ScrambleNumbered(message);
+            scrambler.ScrambleDelimited(message);
     } // Test
 
     private void Start()
