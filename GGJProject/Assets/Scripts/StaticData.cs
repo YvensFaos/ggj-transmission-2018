@@ -45,6 +45,7 @@ public class StaticData : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        
     }
 
     private void Start()
@@ -53,6 +54,7 @@ public class StaticData : MonoBehaviour
         //PlayerInteract = PlayerRef.GetComponentInChildren<BaseInteractScript>();
         //TODO
         DontDestroyOnLoad(this);
+        Random.InitState(666);
     }
 
     /// <summary>
