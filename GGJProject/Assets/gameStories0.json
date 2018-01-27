@@ -1,0 +1,179 @@
+{
+  "Stories": [
+    {
+      "StoryName": "Tutorial",
+      "StoryID": 0,
+      "Messages": [
+        {
+          "Idh": 0,
+          "Order": 0,
+          "Hpath": 0,
+          "Before": [ -1 ],
+          "Msg": "Hello? Are you hearing me?",
+          "opts": [
+            {
+              "opts": "Loud and clear!",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Sure, cap'n.",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Sorry, I can't hear you very well.",
+              "effect": 1,
+              "path": 1
+            }
+          ]
+        },
+        {
+          "Idh": 1,
+          "Order": 1,
+          "Hpath": 1,
+          "Before": [ 0 ],
+          "Msg": "Nice, I wasn't sure this old telephone of mine would be working. Take a look at the window. It must be the worst blizzard I've ever seen in decades. It is nice to have someone new taking over the station to help me. Listen, I have to pick up some tools and replacements for the Generator, before heading your way, okay?Take a look at the window. It must be the worst blizzard I've ever seen in decades. It is nice to have someone new taking over the station to help me. Listen, I have to pick up some tools and replacements for the Generator, before heading your way, okay?",
+          "opts": [
+            {
+              "opts": "Take care with the blizzard.",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Sure, cap'n.",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Not a problem, I can handle everything here",
+              "effect": 1,
+              "path": 0
+            }
+          ]
+        },
+        {
+          "Idh": 2,
+          "Order": 1,
+          "Hpath": 0,
+          "Before": [ 0 ],
+          "Msg": "Are you kidding me, newbie? It ain't a good day for jokes, fella. Take a look at the window. It must be the worst blizzard I've ever seen in decades. I hope you can help me somehow on the station. Listen, I have to pick up some tools and replacements for the Generator, before heading your way, okay?Take a look at the window. It must be the worst blizzard I've ever seen in decades. It is nice to have someone new taking over the station to help me. Listen, I have to pick up some tools and replacements for the Generator, before heading your way, okay?",
+          "opts": [
+            {
+              "opts": "Don't freeze to death, cap'n.",
+              "effect": 1,
+              "path": 0
+            },
+            {
+              "opts": "Sure, cap'n.",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Not a problem, I can handle everything here",
+              "effect": 1,
+              "path": 0
+            }
+          ]
+        },
+        {
+          "Idh": 3,
+          "Order": 2,
+          "Hpath": 0,
+          "Before": [ 1, 2 ],
+          "Msg": "Before I forget. Take a look at the @Generator@. It is not the same oldie that could keeps us talking through all winter...",
+          "opts": [
+            {
+              "opts": "Take a look at what?",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "What does could keep us talking?",
+              "effect": 1,
+              "path": 0
+            },
+            {
+              "opts": "I am not hearing you well.",
+              "effect": 0,
+              "path": 0
+            }
+          ]
+        },
+        {
+          "Idh": 4,
+          "Order": 3,
+          "Hpath": 0,
+          "Before": [ 3 ],
+          "Msg": "It must be the weather affecting the radio transmission. Be aware of this, some 1people1 might 1call1 and ask for help. It is pretty common this time of @the@ year. Use the Map and your Common Knowledge to 2help2 them the 2best2 you can before I got there.",
+          "opts": [
+            {
+              "opts": "I ain't understanding a word you say.",
+              "effect": 1,
+              "path": 0
+            },
+            {
+              "opts": "I'll do my best, cap'n!",
+              "effect": 1,
+              "path": 0
+            },
+            {
+              "opts": "I'll try my best.",
+              "effect": 0,
+              "path": 0
+            }
+          ]
+        },
+        {
+          "Idh": 5,
+          "Order": 4,
+          "Hpath": 0,
+          "Repeat": 3,
+          "Before": [ 4 ],
+          "Msg": "@Good luck@, I'll @see@ @you@ soon! Undestood? Tap the message if you need me to repeat it.",
+          "opts": [
+            {
+              "opts": "Okay.",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "See ya, cap'n!",
+              "effect": 1,
+              "path": 0
+            },
+            {
+              "opts": "Thanks for the tip.",
+              "effect": 0,
+              "path": 0
+            }
+          ]
+        },
+        {
+          "Idh": 6,
+          "Order": 5,
+          "Hpath": 0,
+          "Before": [ 5 ],
+          "Msg": "Don't forget that every message sent or received will consume energy from the generator. If it goes low on energy, 1just1 click to recharge it, 1but1 it may take a while to fix it and you may lose @some@ calls in the process.",
+          "opts": [
+            {
+              "opts": "Not a problem.",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Aight, cap'n!!",
+              "effect": 1,
+              "path": 0
+            },
+            {
+              "opts": "Thanks again for the tip.",
+              "effect": 0,
+              "path": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
