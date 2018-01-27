@@ -28,6 +28,7 @@ public class GameMessageNode : IComparable<GameMessageNode>
     public int index;
     public int order;
     public int hpath;
+    public int repeat;
     public string message;
     public GamePhraseOption[] options;
     public List<GameMessageNode> nodes;
@@ -37,11 +38,12 @@ public class GameMessageNode : IComparable<GameMessageNode>
     public bool isActive;
     public bool alreadyAdded;
 
-    public GameMessageNode(int index, int order, int hpath, string message)
+    public GameMessageNode(int index, int order, int hpath, int repeat, string message)
     {
         this.index = index;
         this.order = order;
         this.hpath = hpath;
+        this.repeat = repeat;
         this.message = message;
         options = new GamePhraseOption[3];
         nodes = new List<GameMessageNode>();
@@ -93,6 +95,7 @@ public class GameStory
         int index;
         int order;
         int hpath;
+        int repeat;
 
         orderedNodes = new GameMessageNode[jsons.Count];
 
@@ -101,17 +104,24 @@ public class GameStory
             index = (int)obj["Idh"].i;
             order = (int)obj["Order"].i;
             hpath = (int)obj["Hpath"].i;
+            repeat = 1;
+
+            if(obj.HasField("Repeat"))
+            {
+                repeat = (int)obj["Repeat"].i;
+            }
+
             parentsJSON = obj["Before"].list;
 
             if (root == null)
             {
-                root = new GameMessageNode(index, order, hpath, obj["Msg"].str);
+                root = new GameMessageNode(index, order, hpath, repeat, obj["Msg"].str);
                 orderedNodes[0] = root;
                 pointer = root;
             }
             else
             {
-                GameMessageNode newMessageNode = new GameMessageNode(index, order, hpath, obj["Msg"].str);
+                GameMessageNode newMessageNode = new GameMessageNode(index, order, hpath, repeat, obj["Msg"].str);
                 for (int i = 0; i < parentsJSON.Count; i++)
                 {
                     orderedNodes[(int)parentsJSON[i].i].nodes.Add(newMessageNode);
