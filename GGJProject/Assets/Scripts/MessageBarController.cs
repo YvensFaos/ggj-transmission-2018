@@ -73,8 +73,6 @@ public class MessageBarController : MonoBehaviour
                 CurrentColor = LowTimeColor;
             }
 
-            LerpBarColor();
-
             if (NewMessageCounter < 0)
             {
                 NewMessageCounter = NewMessageTimer;
@@ -84,6 +82,7 @@ public class MessageBarController : MonoBehaviour
                 isActive = false;
             }
         }
+        LerpBarColor();
     }
 
     /// <summary>
@@ -98,6 +97,12 @@ public class MessageBarController : MonoBehaviour
     public void Restart()
     {
         NewMessageCounter = NewMessageTimer * NewMessageTimeFactor;
+    }
+
+    public void StopBar()
+    {
+        isActive = false;
+        MessageTimerImage.color = Color.white;
     }
 
     public void MessageTest(string message)

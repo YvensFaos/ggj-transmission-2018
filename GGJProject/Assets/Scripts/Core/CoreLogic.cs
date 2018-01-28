@@ -59,6 +59,7 @@ public class CoreLogic : MonoBehaviour
     {
         ScoreOption(gamePhraseOption);
         StaticData.Instance.gameGraph.timeline.CallNextEvent(currentGameMessageNode, gamePhraseOption);
+        messageBarController.StopBar();
         currentButton.ChangeCallState(CallState.WAITING);
         currentButton = null;
 
