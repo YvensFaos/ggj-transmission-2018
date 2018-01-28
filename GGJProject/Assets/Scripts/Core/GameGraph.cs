@@ -346,7 +346,17 @@ public class GameGraph : MonoBehaviour
 
     private void InitGameGraph()
     {
-        string path = Path.Combine(Application.dataPath, gameJsonFile);
+        string path = "";
+        #if UNITY_EDITOR
+                Debug.Log("Unity Editor");
+                path = Path.Combine(Application.dataPath, gameJsonFile);
+        #elif UNITY_ANDROID
+                Debug.Log("Unity Android");
+                path = "jar:file://" + Application.dataPath + "!/assets/";
+                Path.Combine(path, gameJsonFile);
+        #endif
+
+        Debug.Log(path);
         StreamReader reader = new StreamReader(path);
         string jsonString = reader.ReadToEnd();
         JSONObject mainObject = new JSONObject(jsonString);
