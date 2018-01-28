@@ -104,6 +104,11 @@ public class CoreLogic : MonoBehaviour
         MessageText.text = MessageScrambler.NOISE;
     }
 
+    public void ExitToMainMenu()
+    {
+        StaticData.Instance.CallLoadingScene("MainMenu");
+    }
+
     private void OnDestroy()
     {
         StaticData.Instance.coreLogic = null;

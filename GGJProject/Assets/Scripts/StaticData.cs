@@ -14,7 +14,11 @@ public class StaticData : MonoBehaviour
         get {
             if(instance == null)
             {
-                instance = FindObjectOfType<GameObject>().AddComponent<StaticData>();
+                GameObject gameObject = FindObjectOfType<GameObject>();
+                if(gameObject != null)
+                {
+                    instance = gameObject.AddComponent<StaticData>();
+                }
             }
             return instance;
         }
@@ -25,19 +29,8 @@ public class StaticData : MonoBehaviour
     /// </summary>
     public bool DEBUG;
 
-    /// <summary>
-    /// Guarda a referência para o mecanismo de interação do player.
-    /// </summary>
     public GameGraph gameGraph;
-
     public CoreLogic coreLogic;
-
-    /// <summary>
-    /// Guarda a referência para o GameObject do Player.
-    /// </summary>
-    public GameObject PlayerRef;
-
-    public Material debugMaterial;
 
     /// <summary>
     /// Determina qual será a próxima cena a ser chamada pela LoadingScene
@@ -52,11 +45,11 @@ public class StaticData : MonoBehaviour
 
     private void Start()
     {
-        //PlayerRef = GameObject.FindGameObjectsWithTag("Player")[1];
-        //PlayerInteract = PlayerRef.GetComponentInChildren<BaseInteractScript>();
-        //TODO
         DontDestroyOnLoad(this);
-       // Random.InitState(666);
+        if (DEBUG)
+        {
+            Random.InitState(666);
+        }
     }
 
     /// <summary>
@@ -66,6 +59,9 @@ public class StaticData : MonoBehaviour
     public void CallLoadingScene(string NextScene)
     {
         this.NextScene = NextScene;
+        LoadingScript.StaticNextScene = NextScene;
+
+        Log("Call " + NextScene);
         SceneManager.LoadScene("LoadingScreen");
     }
 
