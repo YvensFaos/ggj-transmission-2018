@@ -308,6 +308,7 @@ public class GameGraph : MonoBehaviour
         foreach (JSONObject obj in jsons)
         {
             stories[i] = new GameStory(obj["StoryName"].str, (int)obj["StoryID"].i, obj);
+            ++i;
         }
 
         StaticData.Instance.Log("Generating Game Graph.");

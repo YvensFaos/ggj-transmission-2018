@@ -40,7 +40,6 @@ public class StaticData : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        
     }
 
     private void Start()

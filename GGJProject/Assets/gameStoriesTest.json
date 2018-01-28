@@ -1,177 +1,354 @@
-{"Stories": [
-    {
-      "StoryName": "God Child",
-      "StoryID": 1,
-      "Messages": [
-        {
-          "Idh": 0,
-          "Order": 0,
-          "Hpath": 0, 
-          "Before": [ -1 ],
-          "Msg": "Hello? Hello is anybody there? My 2mother2 is 3not well3, 2she is sick2. There is a lot of 1blood1.I 4didn't know4 what i was 3doing3. She gave me a bunch of 4medicine4.",
-          "opts": [
-            {
-              "opts": "Give her some antibiotics.",
-              "effect":0,
-              "path": 0
-            },
-            {
-              "opts": "Try to find some help.",
-              "effect": 1,
-              "path": 1
-            },
-            {
-              "opts": "Stop the bleeding.",
-              "effect": 0,
-              "path": 0
-            }
-          ]
-        },
-        {
-          "Idh": 1,
-          "Order": 1, 
-          "Hpath": 0, 
-          "Before": [ 0 ],  
-          "Msg": "She is sleeping.I am at 2White Cross hospital2. She 1told me to go to the1 1Berkerley1 .2 How can I get there2",
-          "opts": [
-            {
-              "opts": "Take the Right Path.",
-              "effect": 0,
-              "path":0
-            },
-            {
-              "opts": "Take the Left Path.",
-              "effect": 1,
-              "path": 1
-            },
-            {
-              "opts": "Take the Center Path.",
-              "effect": 1,
-              "path": 1
-            }
-          ]
-        },
-        {
-          "Idh": 2,
-          "Order": 1,
-          "Hpath": 1,
-          "Before": [ 0 ],
-          "Msg": "There is a man out there.He is 2carrying2 a 1big1 1axe1. He is 2coming2 here. I found a knife.",
-          "opts": [
-            {
-              "opts": "Hide and Wait.",
-              "effect": 1,
-              "path": 1
-            },
-            {
-              "opts": "Hide and Kill him.",
-              "effect": 1,
-              "path": 1
-            },
-            {
-              "opts": "Leave right now.",
-              "effect": 1,
-              "path": 0
-            }
-          ]
-        },
+{
+	"Stories": 
+	[
 		{
-          "Idh": 3,
-          "Order": 2,
-          "Hpath": 0,
-          "Before": [ 1, 2 ],
-          "Msg": "I 2see2 a 2big2 1shack1.It’s too cold. There is a 3tree3 1house1.I can see the city 3lights3.",
-          "opts": [
-            {
-              "opts": "Keep Walking.",
-              "effect": 1,
-              "path": 1
-            },
-            {
-              "opts": "Turn Back.",
-              "effect": 1,
-              "path": 1
-            },
-            {
-              "opts": "Enter it.",
-              "effect": 0,
-              "path": 0
-            }
-          ]
-        },
-        {
-          "Idh": 4,
-          "Order": 2,
-          "Hpath": 1,
-          "Before": [ 1, 2 ],
-          "Msg": "It's over. Mom is 2dead2! And I`m 2alone2 now. I can see 1a statue1 of a 1woman1",
-          "opts": [
-            {
-              "opts": "Take the left path to Rivet City!",
-              "effect": 0,
-              "path": 0
-			  },
-            {
-              "opts": "Go to Church of Saint Glory",
-              "effect": 1,
-              "path": 1
-            },
-            {
-              "opts": "Travel to the Pleasantville",
-              "effect": 1,
-              "path": 1
-            }
-          ]
-        },
+		  "StoryName": "Tutorial",
+		  "StoryID": 0,
+		  "Messages": [
+			{
+			  "Idh": 0,
+			  "Order": 0,
+			  "Hpath": 0,
+			  "Before": [ -1 ],
+			  "Msg": "Hello? Are you hearing me?",
+			  "opts": [
+				{
+				  "opts": "Loud and clear!",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Sure, cap'n.",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Sorry, I can't hear you very well.",
+				  "effect": 1,
+				  "path": 1
+				}
+			  ]
+			},
+			{
+			  "Idh": 1,
+			  "Order": 1,
+			  "Hpath": 0,
+			  "Before": [ 0 ],
+			  "Msg": "Nice, I wasn't sure this old telephone of mine would be working. Take a look at the window. It must be the worst blizzard I've ever seen in decades. It is nice to have someone new taking over the station to help me. Listen, I have to pick up some tools and replacements for the Generator, before heading your way, okay?",
+			  "opts": [
+				{
+				  "opts": "Take care with the blizzard.",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Sure, cap'n.",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Not a problem, I can handle everything here.",
+				  "effect": 1,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 2,
+			  "Order": 1,
+			  "Hpath": 1,
+			  "Before": [ 0 ],
+			  "Msg": "Are you kidding me, newbie? It ain't a good day for jokes, fella. Take a look at the window. It must be the worst blizzard I've ever seen in decades. I hope you can help me somehow on the station. Listen, I have to pick up some tools and replacements for the Generator, before heading your way, okay?",
+			  "opts": [
+				{
+				  "opts": "Don't freeze to death, cap'n.",
+				  "effect": 1,
+				  "path": 0
+				},
+				{
+				  "opts": "Sure, cap'n.",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Not a problem, I can handle everything here.",
+				  "effect": 1,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 3,
+			  "Order": 2,
+			  "Hpath": 0,
+			  "Before": [ 1, 2 ],
+			  "Msg": "Before I forget. Take a look at the @Generator@. It is not the same oldie that could keeps us talking through all winter...",
+			  "opts": [
+				{
+				  "opts": "Take a look at what?",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "What does could keep us talking?",
+				  "effect": 1,
+				  "path": 0
+				},
+				{
+				  "opts": "I am not hearing you well.",
+				  "effect": 0,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 4,
+			  "Order": 3,
+			  "Hpath": 0,
+			  "Before": [ 3 ],
+			  "Msg": "It must be the weather affecting the radio transmission. Be aware of this, some 1people1 might 1call1 and ask for help. It is pretty common this time of @the@ year. Use the Map and your Common Knowledge to 2help2 them the 2best2 you can before I got there.",
+			  "opts": [
+				{
+				  "opts": "I ain't understanding a word you say.",
+				  "effect": 1,
+				  "path": 0
+				},
+				{
+				  "opts": "I'll do my best, cap'n!",
+				  "effect": 1,
+				  "path": 0
+				},
+				{
+				  "opts": "I'll try my best.",
+				  "effect": 0,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 5,
+			  "Order": 4,
+			  "Hpath": 0,
+			  "Repeat": 3,
+			  "Before": [ 4 ],
+			  "Msg": "@Good luck@, I'll @see@ @you@ soon! Undestood? Tap the message if you need me to repeat it.",
+			  "opts": [
+				{
+				  "opts": "Okay.",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "See ya, cap'n!",
+				  "effect": 1,
+				  "path": 0
+				},
+				{
+				  "opts": "Thanks for the tip.",
+				  "effect": 0,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 6,
+			  "Order": 5,
+			  "Hpath": 0,
+			  "Before": [ 5 ],
+			  "Msg": "Don't forget that every message sent or received will consume energy from the generator. If it goes low on energy, 1just1 click to recharge it, 1but1 it may take a while to fix it and you may lose @some@ calls in the process.",
+			  "opts": [
+				{
+				  "opts": "Not a problem.",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Aight, cap'n!!",
+				  "effect": 1,
+				  "path": 0
+				},
+				{
+				  "opts": "Thanks again for the tip.",
+				  "effect": 0,
+				  "path": 0
+				}
+			  ]
+			}
+		  ]
+		},
 		{
-          "Idh": 5,
-          "Order": 3,
-          "Hpath": 0,
-          "Before": [ 3,4 ],
-          "Msg": "I think it's 1safe1 here.1Thank1 you.",
-          "opts": [
-            {
-              "opts": "Good. Stay there.!",
-              "effect": 0,
-              "path": 0
-            },
-            {
-              "opts": "No problem kid",
-              "effect": 0,
-              "path": 0
-            },
-            {
-              "opts": "Keep contact",
-              "effect": 0,
-              "path": 0
-            }
-          ]
-        },
-        {
-          "Idh": 6,
-          "Order": 3,
-          "Hpath": 1,
-          "Before": [ 3,4 ],
-          "Msg": "This 2place2 is 1weird1. There is a lot of 1bed1 2people2 here.",
-          "opts": [
-            {
-              "opts": "Run",
-              "effect": Pontuação 0 (bom) ou 1 (ruim),
-              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
-            },
-            {
-              "opts": "Go back",
-              "effect": 0,
-              "path": 0
-            },
-            {
-              "opts": "Hide",
-              "effect": 1,
-              "path": 1
-            }
-              ]
-        }
-      ]
-    }
-  ]
+		  "StoryName": "God Child",
+		  "StoryID": 1,
+		  "Messages": [
+			{
+			  "Idh": 0,
+			  "Order": 0,
+			  "Hpath": 0, 
+			  "Before": [ -1 ],
+			  "Msg": "Hello? Hello is anybody there? My 2mother2 is 3not well3, 2she is sick2. There is a lot of 1blood1.I 4didn't know4 what i was 3doing3. She gave me a bunch of 4medicine4.",
+			  "opts": [
+				{
+				  "opts": "Give her some antibiotics.",
+				  "effect":0,
+				  "path": 0
+				},
+				{
+				  "opts": "Try to find some help.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "Stop the bleeding.",
+				  "effect": 0,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 1,
+			  "Order": 1, 
+			  "Hpath": 0, 
+			  "Before": [ 0 ],  
+			  "Msg": "She is sleeping.I am at 2White Cross hospital2. She 1told me to go to the1 1Berkerley1 .2 How can I get there2",
+			  "opts": [
+				{
+				  "opts": "Take the Right Path.",
+				  "effect": 0,
+				  "path":0
+				},
+				{
+				  "opts": "Take the Left Path.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "Take the Center Path.",
+				  "effect": 1,
+				  "path": 1
+				}
+			  ]
+			},
+			{
+			  "Idh": 2,
+			  "Order": 1,
+			  "Hpath": 1,
+			  "Before": [ 0 ],
+			  "Msg": "There is a man out there.He is 2carrying2 a 1big1 1axe1. He is 2coming2 here. I found a knife.",
+			  "opts": [
+				{
+				  "opts": "Hide and Wait.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "Hide and Kill him.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "Leave right now.",
+				  "effect": 1,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 3,
+			  "Order": 2,
+			  "Hpath": 0,
+			  "Before": [ 1, 2 ],
+			  "Msg": "I 2see2 a 2big2 1shack1.It’s too cold. There is a 3tree3 1house1.I can see the city 3lights3.",
+			  "opts": [
+				{
+				  "opts": "Keep Walking.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "Turn Back.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "Enter it.",
+				  "effect": 0,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 4,
+			  "Order": 2,
+			  "Hpath": 1,
+			  "Before": [ 1, 2 ],
+			  "Msg": "It's over. Mom is 2dead2! And I`m 2alone2 now. I can see 1a statue1 of a 1woman1",
+			  "opts": [
+				{
+				  "opts": "Take the left path to Rivet City!",
+				  "effect": 0,
+				  "path": 0
+				  },
+				{
+				  "opts": "Go to Church of Saint Glory",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "Travel to the Pleasantville",
+				  "effect": 1,
+				  "path": 1
+				}
+			  ]
+			},
+			{
+			  "Idh": 5,
+			  "Order": 3,
+			  "Hpath": 0,
+			  "Before": [ 3,4 ],
+			  "Msg": "I think it's 1safe1 here.1Thank1 you.",
+			  "opts": [
+				{
+				  "opts": "Good. Stay there.!",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "No problem kid",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Keep contact",
+				  "effect": 0,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 6,
+			  "Order": 3,
+			  "Hpath": 1,
+			  "Before": [ 3,4 ],
+			  "Msg": "This 2place2 is 1weird1. There is a lot of 1bed1 2people2 here.",
+			  "opts": [
+				{
+				  "opts": "Run",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "Go back",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Hide",
+				  "effect": 1,
+				  "path": 1
+				}
+				  ]
+			}
+		  ]
+		}
+	]
 }
