@@ -38,6 +38,8 @@ public class GameMessageNode : IComparable<GameMessageNode>
     public bool isActive;
     public bool alreadyAdded;
 
+    public int reveleadWords;
+
     public GameMessageNode(int index, int order, int hpath, int repeat, string message)
     {
         this.index = index;
@@ -51,6 +53,7 @@ public class GameMessageNode : IComparable<GameMessageNode>
         isActive = false;
         alreadyAdded = false;
 
+        reveleadWords = repeat;
         StaticData.Instance.Log("Created node: " + index + " " + order + " " + hpath + " " + message);
     }
 

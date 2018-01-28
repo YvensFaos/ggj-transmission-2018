@@ -5,6 +5,7 @@ public class CoreLogic : MonoBehaviour
 {
     public Text MessageText;
     public OptionButtonLogic[] optionButtons;
+    public MessageScrambler messageScrambler;
 
     private void Start()
     {
@@ -23,7 +24,9 @@ public class CoreLogic : MonoBehaviour
 
     public void ActivateMessage(GameMessageNode messageNode)
     {
-        MessageText.text = messageNode.message;
+        MessageText.text = messageScrambler.Scramble(messageNode);
+        messageNode.reveleadWords++;
+
         optionButtons[0].SetGamePhraseOption(messageNode.options[0]);
         optionButtons[1].SetGamePhraseOption(messageNode.options[1]);
         optionButtons[2].SetGamePhraseOption(messageNode.options[2]);

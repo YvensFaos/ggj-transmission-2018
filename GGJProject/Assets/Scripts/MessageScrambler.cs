@@ -9,6 +9,17 @@ public class MessageScrambler
     private Dictionary<string, string> noiseDictionary;
 
     /// <summary>
+    /// This method shall call the scramble methods, keeping the number of scrambled words according to the reveleadWords of the messageNode parameter.
+    /// It must first reveal the [ ] words, and then the 1 1 words. The 1 1 words must always keep at least 1 word visible.
+    /// </summary>
+    /// <param name="messageNode"></param>
+    /// <returns></returns>
+    public string Scramble(GameMessageNode messageNode)
+    {
+        return messageNode.message;
+    }
+
+    /// <summary>
     /// Define the whole dictionary.
     /// </summary>
     /// <param name="dict">the defined dictionary</param>
