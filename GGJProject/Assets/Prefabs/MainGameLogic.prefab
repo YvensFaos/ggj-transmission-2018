@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4729212517811938}
   - component: {fileID: 114378519425714280}
   - component: {fileID: 114205407038719306}
+  - component: {fileID: 114531138460716550}
   m_Layer: 0
   m_Name: MainGameLogic
   m_TagString: Untagged
@@ -107,3 +108,18 @@ MonoBehaviour:
   gameEnded: 0
   PositiveScore: 0
   NegativeScore: 0
+--- !u!114 &114531138460716550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1133296030214754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1a027433bbe7c4c92a8f413a5b1c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicName: main_theme
+  Volume: 1
+  Pitch: 1
+  DestroyAfter: 0
