@@ -338,7 +338,7 @@ public class GameGraph : MonoBehaviour
 
     public static string gameJsonFile = "gameStoriesTest.json";
     public static string gameJsonFileOnlyName = "gameStoriesTest";
-    public static int maxStoriesSize = 3;//5;
+    public static int maxStoriesSize = 5;
 
     private void Awake()
     {
