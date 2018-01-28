@@ -228,20 +228,33 @@ public class GameTimeline
     {
         GameStory pointer;
         Queue<GameMessageNode> messageNodeQueue = new Queue<GameMessageNode>();
-        currentIndex = 0;
         for (int i = 1; i < storyIndexes.Length; i++)
         {
             pointer = stories[i];
             messageNodeQueue.Enqueue(pointer.root);
         }
+        timedNodes.Clear();
+        currentIndex = 0;
 
-        //bool startOfStory = false;
+        bool startOfStory = false;
         GameMessageNode msgPointer;
         while (messageNodeQueue.Count > 0)
         {
             msgPointer = messageNodeQueue.Dequeue();
-            msgPointer.callTime = msgPointer.index == 0 ? clock + UnityEngine.Random.Range(minimalInterval, initialMaximumInterval) : UnityEngine.Random.Range(minimalInterval, maximumInterval);
+
+            if(msgPointer.index == 0)
+            {
+                startOfStory = true;
+            }
+
+            msgPointer.callTime = startOfStory ? clock + UnityEngine.Random.Range(minimalInterval, initialMaximumInterval) : UnityEngine.Random.Range(minimalInterval, maximumInterval);
             msgPointer.alreadyAdded = true;
+
+            if(startOfStory)
+            {
+                timedNodes.Add(msgPointer);
+            }
+
             foreach (GameMessageNode msgNode in msgPointer.nodes)
             {
                 if (!msgPointer.alreadyAdded)
@@ -253,8 +266,8 @@ public class GameTimeline
                 }
             }
         }
-       
-        
+
+        timedNodes.Sort();
     }
 
     public void CallNextEvent(GameMessageNode messageNode, GamePhraseOption gamePhraseOption)
@@ -283,6 +296,13 @@ public class GameTimeline
             timedNodes.Sort();
 
             isWaiting = false;
+        }
+        else
+        {
+            if(messageNode.isTutorialNode)
+            {
+                FinishTutorial();
+            }
         }
     }
 
@@ -316,7 +336,7 @@ public class GameGraph : MonoBehaviour
     public GameStory[] stories;
 
     public static string gameJsonFile = "gameStoriesTest.json";
-    public static int maxStoriesSize = 1;//5;
+    public static int maxStoriesSize = 3;//5;
 
     private void Awake()
     {
@@ -345,7 +365,27 @@ public class GameGraph : MonoBehaviour
 
         StaticData.Instance.Log("Generating Game Graph.");
         int[] storyIndexes = new int[maxStoriesSize];
-        storyIndexes[0] = 0;
+        storyIndexes[0] = stories[0].storyId;
+
+        int choose = 0;
+        bool alreadyIncluded = false;
+        for (i = 1; i < maxStoriesSize; i++)
+        {
+            do
+            {
+                alreadyIncluded = false;
+                choose = UnityEngine.Random.Range(1, stories.Length);
+                for (int j = 0; j < maxStoriesSize; j++)
+                {
+                    if (storyIndexes[j] == choose)
+                    {
+                        alreadyIncluded = true;
+                    }
+                }
+            } while (alreadyIncluded);
+
+            storyIndexes[i] = choose;
+        }
 
         timeline = new GameTimeline(storyIndexes, stories);
         timeline.isActive = true;
