@@ -31,7 +31,7 @@
         {
           "Idh": 1,
           "Order": 1,
-          "Hpath": 1,
+          "Hpath": 0,
           "Before": [ 0 ],
           "Msg": "Nice, I wasn't sure this old telephone of mine would be working. Take a look at the window. It must be the worst blizzard I've ever seen in decades. It is nice to have someone new taking over the station to help me. Listen, I have to pick up some tools and replacements for the Generator, before heading your way, okay?",
           "opts": [
@@ -55,7 +55,7 @@
         {
           "Idh": 2,
           "Order": 1,
-          "Hpath": 0,
+          "Hpath": 1,
           "Before": [ 0 ],
           "Msg": "Are you kidding me, newbie? It ain't a good day for jokes, fella. Take a look at the window. It must be the worst blizzard I've ever seen in decades. I hope you can help me somehow on the station. Listen, I have to pick up some tools and replacements for the Generator, before heading your way, okay?",
           "opts": [

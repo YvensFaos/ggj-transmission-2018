@@ -8,10 +8,13 @@ public class LoadingScript : MonoBehaviour
 
     public void Start()
     {
-        //VSSoundManager.Instance.NormalizeSources();
         if (StaticNextScene == null || StaticNextScene.Equals(""))
         {
             StaticNextScene = "MainMenu";
+        }
+        else
+        {
+            StaticNextScene = StaticData.Instance.NextScene;
         }
         StartCoroutine("WaitTimer");
     }

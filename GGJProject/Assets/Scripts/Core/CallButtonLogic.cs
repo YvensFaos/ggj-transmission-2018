@@ -11,6 +11,7 @@ public enum CallState
 public class CallButtonLogic : MonoBehaviour {
 
     public CallState CurrentCallState;
+    public GameMessageNode messageNode;
 
     public Color AnsweringColor;
     public Color CallingColor;
@@ -27,11 +28,15 @@ public class CallButtonLogic : MonoBehaviour {
         ChangeCallState(CallState.WAITING);
     }
 	
-    public void ChangeCallState(CallState newCallState)
+    public void ChangeCallState(CallState newCallState, GameMessageNode messageNode = null)
     {
         CurrentCallState = newCallState;
+        if(messageNode != null)
+        {
+            this.messageNode = messageNode;
+        }
 
-        switch(CurrentCallState)
+        switch (CurrentCallState)
         {
             case CallState.ANSWERING:
                 CallImage.CrossFadeColor(AnsweringColor, 1.0f, false, true);
@@ -50,6 +55,13 @@ public class CallButtonLogic : MonoBehaviour {
         switch (CurrentCallState)
         {
             case CallState.CALLING:
+                if(StaticData.Instance.coreLogic.currentButton != null && StaticData.Instance.coreLogic.currentButton != this)
+                {
+                    StaticData.Instance.coreLogic.currentButton.ChangeCallState(CallState.WAITING);
+                    //TODO add logic that activates the bad answers for this call.
+                }
+                StaticData.Instance.coreLogic.ActivateMessage(this, messageNode);
+                ChangeCallState(CallState.ANSWERING);
                 break;
             default:
                 //TODO play a buzz sound or something

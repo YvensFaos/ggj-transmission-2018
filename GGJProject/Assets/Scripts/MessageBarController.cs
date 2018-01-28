@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using UnityEngine;
 
 [RequireComponent(typeof(Image))]
-public class MessageBarController : MonoBehaviour {
-
+public class MessageBarController : MonoBehaviour
+{
     [Header("Settings")]
     [Tooltip("If the message system is active or not")]
     public bool isActive = false;
 
     [Tooltip("Time to a new message event happen")]
-    public float NewMessageTimer = 120f;
+    public float NewMessageTimer = 20f;
+
     private float NewMessageCounter;
 
     [Tooltip("The factor is a multiplier of the NewMessageTimer")]
@@ -20,10 +19,13 @@ public class MessageBarController : MonoBehaviour {
 
     [Tooltip("Color of the bar when the Time is close to full")]
     public Color FullTimeColor;
+
     [Tooltip("Color of the bar when the Time is close to medium")]
     public Color MediumTimeColor;
+
     [Tooltip("Color of the bar when the Time is close to low")]
     public Color LowTimeColor;
+
     private Color CurrentColor;
 
     [Tooltip("Speed to transition between colors")]
@@ -31,6 +33,7 @@ public class MessageBarController : MonoBehaviour {
 
     [Tooltip("Percentage of the bar that represents full")]
     public float FullTimerCoef = 0.8f;
+
     [Tooltip("Percentage of the bar that represents low")]
     public float LowTimerCoef = 0.2f;
 
@@ -41,13 +44,13 @@ public class MessageBarController : MonoBehaviour {
     public UnityEvent EventsListener;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         Init();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (isActive)
         {
@@ -70,8 +73,6 @@ public class MessageBarController : MonoBehaviour {
                 CurrentColor = LowTimeColor;
             }
 
-            LerpBarColor();
-
             if (NewMessageCounter < 0)
             {
                 NewMessageCounter = NewMessageTimer;
@@ -81,7 +82,7 @@ public class MessageBarController : MonoBehaviour {
                 isActive = false;
             }
         }
-
+        LerpBarColor();
     }
 
     /// <summary>
@@ -89,14 +90,19 @@ public class MessageBarController : MonoBehaviour {
     /// </summary>
     private void Init()
     {
-        NewMessageCounter = NewMessageTimer * NewMessageTimeFactor;
-
+        Restart();
         MessageTimerImage = GetComponent<Image>();
     }
 
-    public void MessageTest(string message)
+    public void Restart()
     {
-        Debug.Log(message);
+        NewMessageCounter = NewMessageTimer * NewMessageTimeFactor;
+    }
+
+    public void StopBar()
+    {
+        isActive = false;
+        MessageTimerImage.color = Color.white;
     }
 
     private void LerpBarColor()
