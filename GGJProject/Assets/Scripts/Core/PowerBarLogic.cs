@@ -22,9 +22,14 @@ public class PowerBarLogic : MonoBehaviour {
     public void LoseEnergy(int amount)
     {
         CurrentEnergy -= amount;
+        CurrentEnergy = (CurrentEnergy <= 0) ? 0 : CurrentEnergy;
         UpdateEnergy();
 
         //TODO effect
+        if(CurrentEnergy == 0)
+        {
+            StaticData.Instance.coreLogic.GameOver();
+        }
     }
 
     public void Recharge(int amount)

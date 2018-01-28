@@ -1,29 +1,29 @@
 {"Stories": [
     {
-      "StoryName": "Template",
-      "StoryID": 0,
+      "StoryName": "God Child",
+      "StoryID": 1,
       "Messages": [
         {
           "Idh": 0,
           "Order": 0,
           "Hpath": 0, 
           "Before": [ -1 ],
-          "Msg": "Mensagem?",
+          "Msg": "Hello? Hello is anybody there? My 2mother2 is 3not well3, 2she is sick2. There is a lot of 1blood1.I 4didn't know4 what i was 3doing3. She gave me a bunch of 4medicine4.",
           "opts": [
             {
-              "opts": "Opção 1!",
-              "effect": Pontuação 0 (bom) ou 1 (ruim),
-              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
-            },
-            {
-              "opts": "Opção 2",
-              "effect": 0,
+              "opts": "Give her some antibiotics.",
+              "effect":0,
               "path": 0
             },
             {
-              "opts": "Opção 3",
+              "opts": "Try to find some help.",
               "effect": 1,
               "path": 1
+            },
+            {
+              "opts": "Stop the bleeding.",
+              "effect": 0,
+              "path": 0
             }
           ]
         },
@@ -32,20 +32,20 @@
           "Order": 1, 
           "Hpath": 0, 
           "Before": [ 0 ],  
-          "Msg": "Mensagem?",
+          "Msg": "She is sleeping.I am at 2White Cross hospital2. She 1told me to go to the1 1Berkerley1 .2 How can I get there2",
           "opts": [
             {
-              "opts": "Opção 1!",
-              "effect": Pontuação 0 (bom) ou 1 (ruim),
-              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
-            },
-            {
-              "opts": "Opção 2",
+              "opts": "Take the Right Path.",
               "effect": 0,
-              "path": 0
+              "path":0
             },
             {
-              "opts": "Opção 3",
+              "opts": "Take the Left Path.",
+              "effect": 1,
+              "path": 1
+            },
+            {
+              "opts": "Take the Center Path.",
               "effect": 1,
               "path": 1
             }
@@ -56,22 +56,22 @@
           "Order": 1,
           "Hpath": 1,
           "Before": [ 0 ],
-          "Msg": "Mensagem?",
+          "Msg": "There is a man out there.He is 2carrying2 a 1big1 1axe1. He is 2coming2 here. I found a knife.",
           "opts": [
             {
-              "opts": "Opção 1!",
-              "effect": Pontuação 0 (bom) ou 1 (ruim),
-              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
-            },
-            {
-              "opts": "Opção 2",
-              "effect": 0,
-              "path": 0
-            },
-            {
-              "opts": "Opção 3",
+              "opts": "Hide and Wait.",
               "effect": 1,
               "path": 1
+            },
+            {
+              "opts": "Hide and Kill him.",
+              "effect": 1,
+              "path": 1
+            },
+            {
+              "opts": "Leave right now.",
+              "effect": 1,
+              "path": 0
             }
           ]
         },
@@ -80,22 +80,22 @@
           "Order": 2,
           "Hpath": 0,
           "Before": [ 1, 2 ],
-          "Msg": "Mensagem?",
+          "Msg": "I 2see2 a 2big2 1shack1.It’s too cold. There is a 3tree3 1house1.I can see the city 3lights3.",
           "opts": [
             {
-              "opts": "Opção 1!",
-              "effect": Pontuação 0 (bom) ou 1 (ruim),
-              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
-            },
-            {
-              "opts": "Opção 2",
-              "effect": 0,
-              "path": 0
-            },
-            {
-              "opts": "Opção 3",
+              "opts": "Keep Walking.",
               "effect": 1,
               "path": 1
+            },
+            {
+              "opts": "Turn Back.",
+              "effect": 1,
+              "path": 1
+            },
+            {
+              "opts": "Enter it.",
+              "effect": 0,
+              "path": 0
             }
           ]
         },
@@ -104,20 +104,20 @@
           "Order": 2,
           "Hpath": 1,
           "Before": [ 1, 2 ],
-          "Msg": "Mensagem?",
+          "Msg": "It's over. Mom is 2dead2! And I`m 2alone2 now. I can see 1a statue1 of a 1woman1",
           "opts": [
             {
-              "opts": "Opção 1!",
-              "effect": Pontuação 0 (bom) ou 1 (ruim),
-              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
-            },
-            {
-              "opts": "Opção 2",
+              "opts": "Take the left path to Rivet City!",
               "effect": 0,
               "path": 0
+			  },
+            {
+              "opts": "Go to Church of Saint Glory",
+              "effect": 1,
+              "path": 1
             },
             {
-              "opts": "Opção 3",
+              "opts": "Travel to the Pleasantville",
               "effect": 1,
               "path": 1
             }
@@ -128,22 +128,22 @@
           "Order": 3,
           "Hpath": 0,
           "Before": [ 3,4 ],
-          "Msg": "Mensagem?",
+          "Msg": "I think it's 1safe1 here.1Thank1 you.",
           "opts": [
             {
-              "opts": "Opção 1!",
-              "effect": Pontuação 0 (bom) ou 1 (ruim),
-              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
-            },
-            {
-              "opts": "Opção 2",
+              "opts": "Good. Stay there.!",
               "effect": 0,
               "path": 0
             },
             {
-              "opts": "Opção 3",
-              "effect": 1,
-              "path": 1
+              "opts": "No problem kid",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Keep contact",
+              "effect": 0,
+              "path": 0
             }
           ]
         },
@@ -152,20 +152,20 @@
           "Order": 3,
           "Hpath": 1,
           "Before": [ 3,4 ],
-          "Msg": "Mensagem?",
+          "Msg": "This 2place2 is 1weird1. There is a lot of 1bed1 2people2 here.",
           "opts": [
             {
-              "opts": "Opção 1!",
+              "opts": "Run",
               "effect": Pontuação 0 (bom) ou 1 (ruim),
               "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
             },
             {
-              "opts": "Opção 2",
+              "opts": "Go back",
               "effect": 0,
               "path": 0
             },
             {
-              "opts": "Opção 3",
+              "opts": "Hide",
               "effect": 1,
               "path": 1
             }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class CoreLogic : MonoBehaviour
 {
     public Text MessageText;
+
     public MessageBarController messageBarController;
     public PowerBarLogic powerBarLogic;
 
@@ -16,6 +17,10 @@ public class CoreLogic : MonoBehaviour
     public CallButtonLogic currentButton;
 
     public GameObject chargeScreen;
+    public GameObject gameOverScreen;
+    public GameObject victoryScreen;
+
+    public bool gameEnded;
 
     public float PositiveScore;
     public float NegativeScore;
@@ -30,6 +35,7 @@ public class CoreLogic : MonoBehaviour
     {
         StaticData.Instance.coreLogic = this;
         ResetMessageText();
+        gameEnded = false;
     }
 
     public void CallPhone(GameMessageNode messageNode)
@@ -126,6 +132,24 @@ public class CoreLogic : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(2.0f, 4.0f));
         powerBarLogic.Recharge(Random.Range(30, 51));
         chargeScreen.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        if(!gameEnded)
+        {
+            gameOverScreen.SetActive(true);
+            gameEnded = true;
+        }
+    }
+
+    public void Victory()
+    {
+        if (!gameEnded)
+        {
+            victoryScreen.SetActive(true);
+            gameEnded = true;
+        }
     }
 
     public void ExitToMainMenu()

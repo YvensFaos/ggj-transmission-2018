@@ -100,5 +100,8 @@ MonoBehaviour:
     reveleadWords: 0
   currentButton: {fileID: 0}
   chargeScreen: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  victoryScreen: {fileID: 0}
+  gameEnded: 0
   PositiveScore: 0
   NegativeScore: 0

@@ -227,43 +227,54 @@ public class GameTimeline
 
     public void CallNextEvent(GameMessageNode messageNode, GamePhraseOption gamePhraseOption)
     {
-        GameMessageNode nextMessage;
-        int i = 0;
-        do
+        if (messageNode.nodes.Count > 0)
         {
-            nextMessage = messageNode.nodes[i];
-            if(nextMessage.hpath == gamePhraseOption.path)
+            GameMessageNode nextMessage;
+            int i = 0;
+            do
             {
-                break;
-            }
-        } while (++i < messageNode.nodes.Count);
+                nextMessage = messageNode.nodes[i];
+                if (nextMessage.hpath == gamePhraseOption.path)
+                {
+                    break;
+                }
+            } while (++i < messageNode.nodes.Count);
 
-        messageNode.isActive = false;
-        messageNode.wasPlayed = true;
+            messageNode.isActive = false;
+            messageNode.wasPlayed = true;
 
-        nextMessage.callTime = clock + UnityEngine.Random.Range(minimalInterval, maximumInterval);
-        nextMessage.alreadyAdded = true;
+            nextMessage.callTime = clock + UnityEngine.Random.Range(minimalInterval, maximumInterval);
+            nextMessage.alreadyAdded = true;
 
-        timedNodes.Add(nextMessage);
-        //TODO adicionar método que remove todas as mensagens que foram jogadas
-        timedNodes.Sort();
+            timedNodes.Add(nextMessage);
+            //TODO adicionar método que remove todas as mensagens que foram jogadas
+            timedNodes.Sort();
 
-        isWaiting = false;
+            isWaiting = false;
+        }
     }
 
     public void Update()
     {
         clock += Time.deltaTime;
 
-        if (!isWaiting && clock >= timedNodes[currentIndex].callTime)
+        if (currentIndex <= timedNodes.Count)
         {
-            timedNodes[currentIndex].Activate();
-            ++currentIndex;
-            if (currentIndex >= timedNodes.Count)
+            if (!isWaiting && clock >= timedNodes[currentIndex].callTime)
             {
-                isWaiting = true;
+                timedNodes[currentIndex].Activate();
+                ++currentIndex;
+                if (currentIndex >= timedNodes.Count)
+                {
+                    isWaiting = true;
+                }
             }
         }
+        //else
+        //{
+        //    StaticData.Instance.coreLogic.Victory();
+        //    isActive = false;
+        //}
     }
 }
 
@@ -309,7 +320,7 @@ public class GameGraph : MonoBehaviour
 
     private void Update()
     {
-        if (timeline.isActive)
+        if (timeline.isActive && !StaticData.Instance.coreLogic.gameEnded)
         {
             timeline.Update();
         }
