@@ -349,6 +349,180 @@
 				  ]
 			}
 		  ]
+		},
+		{
+		  "StoryName": "The Scientist",
+		  "StoryID": 5,
+		  "Messages": [
+			{
+			  "Idh": 0,
+			  "Order": 0,
+			  "Hpath": 0, 
+			  "Before": [ -1 ],
+			  "Msg": "Listen to me! I found the1 source1 of this strange event. But i need to 1know where I am1. I can see a 2hospital2 and next to it square made of 2red stones2.",
+			  "opts": [
+				{
+				  "opts": "You are at Pleasantville.!",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "You are at Berkeley.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "You are at Ridge City.",
+				  "effect": 1,
+				  "path": 1
+				}
+			  ]
+			},
+			{
+			  "Idh": 1,
+			  "Order": 1, 
+			  "Hpath": 0, 
+			  "Before": [ 0 ],  
+			  "Msg": "I am a scientist! I don’t believe in 3the occult3. Not until now. I found 3some clues3 1in the woods1.However, I 1got lost again1.I can see a 2Statue2 and a2Church2.?",
+			  "opts": [
+				{
+				  "opts": "You are at Central Road.",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "You are close to the Shack.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "You are close to Stallion Station.",
+				  "effect": 1,
+				  "path": 1
+				}
+			  ]
+			},
+			{
+			  "Idh": 2,
+			  "Order": 1,
+			  "Hpath": 1,
+			  "Before": [ 0 ],
+			  "Msg": "I lost precious time because your mistake.Well, at least I found 3some clues3 1in the woods1 !However, I 1got lost again1.I can see a 2Statue2 and a 2Church2.",
+			  "opts": [
+				{
+				  "opts": "You are at Central Road",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "You are close to the Tree house Shack.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "You are close to Berkeley",
+				  "effect": 1,
+				  "path": 1
+				}
+			  ]
+			},
+			{
+			  "Idh": 3,
+			  "Order": 2,
+			  "Hpath": 0,
+			  "Before": [ 1, 2 ],
+			  "Msg": "I followed the clues to the basement of an hospital. I 1found a ritual1. The clue was 2about a key2 and 2the gate being2 the same.It has to do 1with a missing word1. Can you help me??",
+			  "opts": [
+				{
+				  "opts": "Yog-Sothth!",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "I don't Know",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Abra Kadabra",
+				  "effect": 0,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 4,
+			  "Order": 2,
+			  "Hpath": 1,
+			  "Before": [ 1, 2 ],
+			  "Msg": "1Imbecile1. You made me lose 2precious time2. I will make sure 1you lose your job1 if 2we survive2 this!",
+			  "opts": [
+				{
+				  "opts": "Fuck you!",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "My job is telling you to go home.",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Sorry. You don't need to be rude",
+				  "effect": 1,
+				  "path": 1
+				}
+			  ]
+			},
+			{
+			  "Idh": 5,
+			  "Order": 3,
+			  "Hpath": 0,
+			  "Before": [ 3,4 ],
+			  "Msg": "I just 1lost my time1 here. Thanks 1for nothing1.?",
+			  "opts": [
+				{
+				  "opts": "At leas you are alive",
+				  "effect":0,
+				  "path":0
+				},
+				{
+				  "opts": "Asshole",
+				  "effect": 0,
+				  "path": 0
+				},
+				{
+				  "opts": "Bye",
+				  "effect": 0,
+				  "path": 0
+				}
+			  ]
+			},
+			{
+			  "Idh": 6,
+			  "Order": 3,
+			  "Hpath": 1,
+			  "Before": [ 3,4 ],
+			  "Msg": "YES 1MASTER!1 I will 1serve your avatar1 and2bring2 more 2sacrifices2.",
+			  "opts": [
+				{
+				  "opts": "Shit....",
+				  "effect": 1),
+				  "path": 1
+				},
+				{
+				  "opts": "That didn’t sound good.",
+				  "effect": 1,
+				  "path": 1
+				},
+				{
+				  "opts": "Asshole",
+				  "effect": 1,
+				  "path": 1
+				}
+				  ]
+			}
+		  ]
 		}
 	]
 }

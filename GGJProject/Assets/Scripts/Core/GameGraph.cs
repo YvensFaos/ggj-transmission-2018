@@ -141,6 +141,11 @@ public class GameStory
             {
                 pointer.options[i] = new GamePhraseOption(options[i]["opts"].str, (int)options[i]["effect"].i, (int)options[i]["effect"].i);
             }
+
+            if(storyId == 0)
+            {
+                pointer.isTutorialNode = true;
+            }
         }
     }
 }
@@ -149,9 +154,11 @@ public class GameStory
 public class GameTimeline
 {
     public GameStory[] stories;
+    private int[] storyIndexes;
     public float clock;
     public float minimalInterval = 1.0f;
     public float maximumInterval = 5.0f;
+    public float initialMaximumInterval = 10.0f;
     public bool isActive;
     public bool isWaiting;
     private bool hasFinished;
@@ -180,6 +187,7 @@ public class GameTimeline
         {
             this.stories[i] = stories[storyIndexes[i]];
         }
+        this.storyIndexes = storyIndexes;
 
         timedNodes = new List<GameMessageNode>();
         Queue<GameMessageNode> messageNodeQueue = new Queue<GameMessageNode>();
@@ -211,20 +219,42 @@ public class GameTimeline
 
         float startTime = timedNodes[timedNodes.Count - 1].callTime + UnityEngine.Random.Range(minimalInterval, maximumInterval);
 
-        //Set another stories
-        GameStory pointer;
-        for (int i = 1; i < storyIndexes.Length; i++)
-        {
-            pointer = this.stories[i];
-
-            //TODO
-        }
-
-        timedNodes.Sort();
-
         isActive = false;
         isWaiting = false;
         currentIndex = 0;
+    }
+
+    public void FinishTutorial()
+    {
+        GameStory pointer;
+        Queue<GameMessageNode> messageNodeQueue = new Queue<GameMessageNode>();
+        currentIndex = 0;
+        for (int i = 1; i < storyIndexes.Length; i++)
+        {
+            pointer = stories[i];
+            messageNodeQueue.Enqueue(pointer.root);
+        }
+
+        //bool startOfStory = false;
+        GameMessageNode msgPointer;
+        while (messageNodeQueue.Count > 0)
+        {
+            msgPointer = messageNodeQueue.Dequeue();
+            msgPointer.callTime = msgPointer.index == 0 ? clock + UnityEngine.Random.Range(minimalInterval, initialMaximumInterval) : UnityEngine.Random.Range(minimalInterval, maximumInterval);
+            msgPointer.alreadyAdded = true;
+            foreach (GameMessageNode msgNode in msgPointer.nodes)
+            {
+                if (!msgPointer.alreadyAdded)
+                {
+                    if (!msgNode.alreadyAdded)
+                    {
+                        messageNodeQueue.Enqueue(msgNode);
+                    }
+                }
+            }
+        }
+       
+        
     }
 
     public void CallNextEvent(GameMessageNode messageNode, GamePhraseOption gamePhraseOption)
