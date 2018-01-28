@@ -142,7 +142,7 @@ public class GameStory
                 pointer.options[i] = new GamePhraseOption(options[i]["opts"].str, (int)options[i]["effect"].i, (int)options[i]["effect"].i);
             }
 
-            if(storyId == 0)
+            if (storyId == 0)
             {
                 pointer.isTutorialNode = true;
             }
@@ -242,7 +242,7 @@ public class GameTimeline
         {
             msgPointer = messageNodeQueue.Dequeue();
 
-            if(msgPointer.index == 0)
+            if (msgPointer.index == 0)
             {
                 startOfStory = true;
             }
@@ -250,7 +250,7 @@ public class GameTimeline
             msgPointer.callTime = startOfStory ? clock + 3.0f + UnityEngine.Random.Range(minimalInterval, initialMaximumInterval) : UnityEngine.Random.Range(minimalInterval, maximumInterval);
             msgPointer.alreadyAdded = true;
 
-            if(startOfStory)
+            if (startOfStory)
             {
                 timedNodes.Add(msgPointer);
             }
@@ -268,7 +268,7 @@ public class GameTimeline
         }
 
         timedNodes.Sort();
-        isWaiting = false; 
+        isWaiting = false;
     }
 
     public void CallNextEvent(GameMessageNode messageNode, GamePhraseOption gamePhraseOption)
@@ -300,7 +300,7 @@ public class GameTimeline
         }
         else
         {
-            if(messageNode.isTutorialNode)
+            if (messageNode.isTutorialNode)
             {
                 FinishTutorial();
             }
@@ -337,6 +337,7 @@ public class GameGraph : MonoBehaviour
     public GameStory[] stories;
 
     public static string gameJsonFile = "gameStoriesTest.json";
+    public static string gameJsonFileOnlyName = "gameStoriesTest";
     public static int maxStoriesSize = 3;//5;
 
     private void Awake()
@@ -348,16 +349,16 @@ public class GameGraph : MonoBehaviour
     private void InitGameGraph()
     {
         string path = "";
-        #if UNITY_EDITOR
-                path = Path.Combine(Application.dataPath, gameJsonFile);
-        #elif UNITY_ANDROID
-                Debug.Log("Unity Android");
-                path = "jar:file://" + Application.dataPath + "!/assets/";
-                Path.Combine(path, gameJsonFile);
-        #endif
-
+        string jsonString = "";
+#if UNITY_EDITOR
+        path = Path.Combine(Application.dataPath, gameJsonFile);
         StreamReader reader = new StreamReader(path);
-        string jsonString = reader.ReadToEnd();
+        jsonString = reader.ReadToEnd();
+#elif UNITY_ANDROID
+        TextAsset file = Resources.Load(gameJsonFileOnlyName) as TextAsset;
+        jsonString = file.ToString();
+#endif
+
         JSONObject mainObject = new JSONObject(jsonString);
 
         List<JSONObject> jsons = mainObject.list[0].list;
