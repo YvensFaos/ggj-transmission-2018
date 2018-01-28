@@ -72,9 +72,7 @@ public class MessageScrambler
             ret =
                 (last < 0 ? "" : left.Substring(0, last + 1))
                 + NOISE +
-                (first < 0 ? "" : right.Substring(first))
-            ;
-            Debug.Log(ret);
+                (first < 0 ? "" : right.Substring(first));
         }
 
         return ret;
@@ -121,7 +119,6 @@ public class MessageScrambler
             }
         }
 
-        Debug.Log(ret);
         return ret;
     } // ScrambleNumbered
 
@@ -152,7 +149,6 @@ public class MessageScrambler
             }
         }
 
-        Debug.Log(ret);
         return ret;
     } // ScrambleDelimited
 

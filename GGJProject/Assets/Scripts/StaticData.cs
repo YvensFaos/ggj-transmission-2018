@@ -26,9 +26,11 @@ public class StaticData : MonoBehaviour
     public bool DEBUG;
 
     /// <summary>
-    /// Guarda a referência para o mecanismo de interação do player. Esse mecanismo é acionado pelos scripts dos objetos interativos.
+    /// Guarda a referência para o mecanismo de interação do player.
     /// </summary>
-    //public BaseInteractScript PlayerInteract;
+    public GameGraph gameGraph;
+
+    public CoreLogic coreLogic;
 
     /// <summary>
     /// Guarda a referência para o GameObject do Player.

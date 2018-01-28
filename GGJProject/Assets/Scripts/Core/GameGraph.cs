@@ -62,6 +62,7 @@ public class GameMessageNode : IComparable<GameMessageNode>
     public void Activate()
     {
         isActive = true;
+        StaticData.Instance.coreLogic.ActivateMessage(this);
 
         //TODO ring a phone! :)
     }
@@ -254,6 +255,7 @@ public class GameGraph : MonoBehaviour
     private void Awake()
     {
         InitGameGraph();
+        StaticData.Instance.gameGraph = this;
     }
 
     private void InitGameGraph()
@@ -279,6 +281,7 @@ public class GameGraph : MonoBehaviour
         storyIndexes[0] = 0;
 
         timeline = new GameTimeline(storyIndexes, stories);
+        timeline.isActive = true;
     }
 
     private void Update()
@@ -287,5 +290,10 @@ public class GameGraph : MonoBehaviour
         {
             timeline.Update();
         }
+    }
+
+    private void OnDestroy()
+    {
+        StaticData.Instance.gameGraph = null;
     }
 }

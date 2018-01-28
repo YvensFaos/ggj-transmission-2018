@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 223228827}
   - component: {fileID: 223228826}
   m_Layer: 5
-  m_Name: Text
+  m_Name: MessageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,8 +654,8 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Message received!
 --- !u!222 &223228827
@@ -1075,6 +1075,18 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224986465666613144, guid: edd03f3c52d042c48bcdc41b6c50caea,
     type: 2}
   m_PrefabInternal: {fileID: 566500565}
+--- !u!114 &634470210 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114842189099844284, guid: edd03f3c52d042c48bcdc41b6c50caea,
+    type: 2}
+  m_PrefabInternal: {fileID: 566500565}
+  m_Script: {fileID: 11500000, guid: 9fa41d5938fb81043ba9e5fde4d030fb, type: 3}
+--- !u!114 &663014016 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114842189099844284, guid: edd03f3c52d042c48bcdc41b6c50caea,
+    type: 2}
+  m_PrefabInternal: {fileID: 560055306}
+  m_Script: {fileID: 11500000, guid: 9fa41d5938fb81043ba9e5fde4d030fb, type: 3}
 --- !u!1 &767180538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1358,12 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224642522766273752, guid: 9357f3b30318f094d868926a12e49834,
     type: 2}
   m_PrefabInternal: {fileID: 802807754}
+--- !u!114 &925223132 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114842189099844284, guid: edd03f3c52d042c48bcdc41b6c50caea,
+    type: 2}
+  m_PrefabInternal: {fileID: 1299314059}
+  m_Script: {fileID: 11500000, guid: 9fa41d5938fb81043ba9e5fde4d030fb, type: 3}
 --- !u!1001 &948493270
 Prefab:
   m_ObjectHideFlags: 0
@@ -1601,6 +1619,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114378519425714280, guid: f49b187cdee4f2045a86179b5b672b06,
+        type: 2}
+      propertyPath: optionButtons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4729212517811938, guid: f49b187cdee4f2045a86179b5b672b06, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1633,6 +1656,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114378519425714280, guid: f49b187cdee4f2045a86179b5b672b06,
+        type: 2}
+      propertyPath: MessageText
+      value: 
+      objectReference: {fileID: 223228826}
+    - target: {fileID: 114378519425714280, guid: f49b187cdee4f2045a86179b5b672b06,
+        type: 2}
+      propertyPath: optionButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 663014016}
+    - target: {fileID: 114378519425714280, guid: f49b187cdee4f2045a86179b5b672b06,
+        type: 2}
+      propertyPath: optionButtons.Array.data[1]
+      value: 
+      objectReference: {fileID: 634470210}
+    - target: {fileID: 114378519425714280, guid: f49b187cdee4f2045a86179b5b672b06,
+        type: 2}
+      propertyPath: optionButtons.Array.data[2]
+      value: 
+      objectReference: {fileID: 925223132}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f49b187cdee4f2045a86179b5b672b06, type: 2}
   m_IsPrefabParent: 0
