@@ -272,7 +272,7 @@ public class GameGraph : MonoBehaviour
     public GameTimeline timeline;
     public GameStory[] stories;
 
-    public static string gameJsonFile = "gameStories0.json";
+    public static string gameJsonFile = "gameStoriesTest.json";
     public static int maxStoriesSize = 1;//5;
 
     private void Awake()

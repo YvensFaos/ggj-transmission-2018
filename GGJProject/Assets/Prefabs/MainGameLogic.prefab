@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MessageText: {fileID: 0}
   messageBarController: {fileID: 0}
+  powerBarLogic: {fileID: 0}
   optionButtons:
   - {fileID: 0}
   - {fileID: 0}
@@ -83,3 +84,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  currentGameMessageNode:
+    index: 0
+    order: 0
+    hpath: 0
+    repeat: 0
+    message: 
+    options: []
+    nodes: []
+    parents: []
+    callTime: 0
+    isActive: 0
+    alreadyAdded: 0
+    wasPlayed: 0
+    reveleadWords: 0
+  currentButton: {fileID: 0}
+  chargeScreen: {fileID: 0}
+  PositiveScore: 0
+  NegativeScore: 0

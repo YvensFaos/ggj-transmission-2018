@@ -1,16 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class CoreLogic : MonoBehaviour
 {
     public Text MessageText;
     public MessageBarController messageBarController;
+    public PowerBarLogic powerBarLogic;
+
     public OptionButtonLogic[] optionButtons;
     public CallButtonLogic[] callButtons;
         
     public MessageScrambler messageScrambler;
     public GameMessageNode currentGameMessageNode;
     public CallButtonLogic currentButton;
+
+    public GameObject chargeScreen;
 
     public float PositiveScore;
     public float NegativeScore;
@@ -52,6 +57,8 @@ public class CoreLogic : MonoBehaviour
         optionButtons[0].SetGamePhraseOption(messageNode.options[0]);
         optionButtons[1].SetGamePhraseOption(messageNode.options[1]);
         optionButtons[2].SetGamePhraseOption(messageNode.options[2]);
+
+        powerBarLogic.LoseEnergy(5);
     }
 
     public void RepeatMessage()
@@ -60,10 +67,12 @@ public class CoreLogic : MonoBehaviour
         {
             ++currentGameMessageNode.reveleadWords;
             MessageText.text = messageScrambler.Scramble(currentGameMessageNode);
+            powerBarLogic.LoseEnergy(10);
         }
         else
         {
             TimedOut();
+            powerBarLogic.LoseEnergy(15);
         }
     }
 
@@ -79,6 +88,8 @@ public class CoreLogic : MonoBehaviour
         optionButtons[0].BlankGamePhraseOption();
         optionButtons[1].BlankGamePhraseOption();
         optionButtons[2].BlankGamePhraseOption();
+
+        powerBarLogic.LoseEnergy(5);
     }
 
     public void TimedOut()
@@ -102,6 +113,19 @@ public class CoreLogic : MonoBehaviour
     private void ResetMessageText()
     {
         MessageText.text = MessageScrambler.NOISE;
+    }
+
+    public void RechargeGenerator()
+    {
+        chargeScreen.SetActive(true);
+        StartCoroutine("RechargeCoroutine");
+    }
+
+    private IEnumerator RechargeCoroutine()
+    {
+        yield return new WaitForSeconds(Random.Range(2.0f, 4.0f));
+        powerBarLogic.Recharge(Random.Range(30, 51));
+        chargeScreen.SetActive(false);
     }
 
     public void ExitToMainMenu()

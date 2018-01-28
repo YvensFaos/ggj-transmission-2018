@@ -1,0 +1,177 @@
+{"Stories": [
+    {
+      "StoryName": "Template",
+      "StoryID": 0,
+      "Messages": [
+        {
+          "Idh": 0,
+          "Order": 0,
+          "Hpath": 0, 
+          "Before": [ -1 ],
+          "Msg": "Mensagem?",
+          "opts": [
+            {
+              "opts": "Opção 1!",
+              "effect": Pontuação 0 (bom) ou 1 (ruim),
+              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
+            },
+            {
+              "opts": "Opção 2",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Opção 3",
+              "effect": 1,
+              "path": 1
+            }
+          ]
+        },
+        {
+          "Idh": 1,
+          "Order": 1, 
+          "Hpath": 0, 
+          "Before": [ 0 ],  
+          "Msg": "Mensagem?",
+          "opts": [
+            {
+              "opts": "Opção 1!",
+              "effect": Pontuação 0 (bom) ou 1 (ruim),
+              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
+            },
+            {
+              "opts": "Opção 2",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Opção 3",
+              "effect": 1,
+              "path": 1
+            }
+          ]
+        },
+        {
+          "Idh": 2,
+          "Order": 1,
+          "Hpath": 1,
+          "Before": [ 0 ],
+          "Msg": "Mensagem?",
+          "opts": [
+            {
+              "opts": "Opção 1!",
+              "effect": Pontuação 0 (bom) ou 1 (ruim),
+              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
+            },
+            {
+              "opts": "Opção 2",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Opção 3",
+              "effect": 1,
+              "path": 1
+            }
+          ]
+        },
+		{
+          "Idh": 3,
+          "Order": 2,
+          "Hpath": 0,
+          "Before": [ 1, 2 ],
+          "Msg": "Mensagem?",
+          "opts": [
+            {
+              "opts": "Opção 1!",
+              "effect": Pontuação 0 (bom) ou 1 (ruim),
+              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
+            },
+            {
+              "opts": "Opção 2",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Opção 3",
+              "effect": 1,
+              "path": 1
+            }
+          ]
+        },
+        {
+          "Idh": 4,
+          "Order": 2,
+          "Hpath": 1,
+          "Before": [ 1, 2 ],
+          "Msg": "Mensagem?",
+          "opts": [
+            {
+              "opts": "Opção 1!",
+              "effect": Pontuação 0 (bom) ou 1 (ruim),
+              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
+            },
+            {
+              "opts": "Opção 2",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Opção 3",
+              "effect": 1,
+              "path": 1
+            }
+          ]
+        },
+		{
+          "Idh": 5,
+          "Order": 3,
+          "Hpath": 0,
+          "Before": [ 3,4 ],
+          "Msg": "Mensagem?",
+          "opts": [
+            {
+              "opts": "Opção 1!",
+              "effect": Pontuação 0 (bom) ou 1 (ruim),
+              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
+            },
+            {
+              "opts": "Opção 2",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Opção 3",
+              "effect": 1,
+              "path": 1
+            }
+          ]
+        },
+        {
+          "Idh": 6,
+          "Order": 3,
+          "Hpath": 1,
+          "Before": [ 3,4 ],
+          "Msg": "Mensagem?",
+          "opts": [
+            {
+              "opts": "Opção 1!",
+              "effect": Pontuação 0 (bom) ou 1 (ruim),
+              "path": Caminho 0 (azul-bom)  caminho 1 (ruim)
+            },
+            {
+              "opts": "Opção 2",
+              "effect": 0,
+              "path": 0
+            },
+            {
+              "opts": "Opção 3",
+              "effect": 1,
+              "path": 1
+            }
+              ]
+        }
+      ]
+    }
+  ]
+}
