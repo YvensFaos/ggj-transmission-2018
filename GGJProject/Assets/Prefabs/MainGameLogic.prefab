@@ -52,6 +52,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f837eaca745b940aa017d632037422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeline:
+    stories: []
+    clock: 0
+    minimalInterval: 0
+    maximumInterval: 0
+    isActive: 0
+    timedNodes: []
+  stories: []
 --- !u!114 &114378519425714280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,4 +71,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d7218df24e8de468540e7859b52098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameGraph: {fileID: 114205407038719306}
+  MessageText: {fileID: 0}
+  optionButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  callButtonLogic:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

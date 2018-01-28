@@ -5,6 +5,8 @@ public class CoreLogic : MonoBehaviour
 {
     public Text MessageText;
     public OptionButtonLogic[] optionButtons;
+    public CallButtonLogic[] callButtons;
+        
     public MessageScrambler messageScrambler;
 
     private void Awake()
@@ -24,7 +26,13 @@ public class CoreLogic : MonoBehaviour
 
     public void CallPhone(GameMessageNode messageNode)
     {
-
+        foreach(CallButtonLogic callButton in callButtons)
+        {
+            if(callButton.CurrentCallState == CallState.WAITING)
+            {
+                callButton.ChangeCallState(CallState.CALLING, messageNode);
+            }
+        }
     }
 
     public void ActivateMessage(GameMessageNode messageNode)
