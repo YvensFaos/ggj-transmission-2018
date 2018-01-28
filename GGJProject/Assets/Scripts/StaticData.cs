@@ -11,15 +11,8 @@ public class StaticData : MonoBehaviour
 
     public static StaticData Instance
     {
-        get {
-            if(instance == null)
-            {
-                GameObject gameObject = FindObjectOfType<GameObject>();
-                if(gameObject != null)
-                {
-                    instance = gameObject.AddComponent<StaticData>();
-                }
-            }
+        get
+        {
             return instance;
         }
     }
@@ -39,8 +32,14 @@ public class StaticData : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Eu!");
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     private void Start()
@@ -72,7 +71,7 @@ public class StaticData : MonoBehaviour
     /// <param name="debugPhrase"></param>
     public void Log(string debugPhrase)
     {
-        if(Instance.DEBUG)
+        if (Instance.DEBUG)
         {
             Debug.Log(debugPhrase);
         }

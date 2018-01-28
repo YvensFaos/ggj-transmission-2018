@@ -43,9 +43,6 @@ public class PowerBarLogic : MonoBehaviour {
     void UpdateEnergy()
     {
         EnergyBar.fillAmount = (float) CurrentEnergy / FullEnergy;
-        Debug.Log(StaticData.Instance.coreLogic);
-        Debug.Log(StaticData.Instance.coreLogic.effectManager);
-        Debug.Log(StaticData.Instance.coreLogic.effectManager.VignetteIntensity);
 
         StaticData.Instance.coreLogic.effectManager.VignetteIntensity = (1 - ((float)CurrentEnergy / FullEnergy)) * 0.8f;
     }
