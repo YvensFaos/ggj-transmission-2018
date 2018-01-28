@@ -247,7 +247,7 @@ public class GameTimeline
                 startOfStory = true;
             }
 
-            msgPointer.callTime = startOfStory ? clock + UnityEngine.Random.Range(minimalInterval, initialMaximumInterval) : UnityEngine.Random.Range(minimalInterval, maximumInterval);
+            msgPointer.callTime = startOfStory ? clock + 3.0f + UnityEngine.Random.Range(minimalInterval, initialMaximumInterval) : UnityEngine.Random.Range(minimalInterval, maximumInterval);
             msgPointer.alreadyAdded = true;
 
             if(startOfStory)
@@ -268,6 +268,7 @@ public class GameTimeline
         }
 
         timedNodes.Sort();
+        isWaiting = false; 
     }
 
     public void CallNextEvent(GameMessageNode messageNode, GamePhraseOption gamePhraseOption)

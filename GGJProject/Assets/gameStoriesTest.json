@@ -726,6 +726,152 @@
 					]
 				}
 			]
+		}, {
+			"StoryName": "True or False",
+			"StoryID": 8,
+			"Messages": [{
+					"Idh": 0,
+					"Order": 0,
+					"Hpath": 0,
+					"Before": [-1],
+					"Msg": "Hello. I can use your help to solve a 1problem1. A woman is trying to enter here and she is telling me 1she is from Berkley1, and worked in 2the blue2 2cross hospital2. Is that true?",
+					"opts": [{
+							"opts": "It’s a Lie!",
+							"effect": 0,
+							"path": 0(ruim)
+						}, {
+							"opts": "It's true",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "It can be both",
+							"effect": 1,
+							"path": 1
+						}
+					]
+				}, {
+					"Idh": 1,
+					"Order": 1,
+					"Hpath": 0,
+					"Before": [0],
+					"Msg": "There is a man here and he says he is a 1hunter1 who lives close to a 1tree house1.He moved because the 2church2 close to his home was 2attacked2. Is that true?",
+					"opts": [{
+							"opts": "It's True",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "It’s a lie.",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "It can be both.",
+							"effect": 0,
+							"path": 0
+						}
+					]
+				}, {
+					"Idh": 2,
+					"Order": 1,
+					"Hpath": 1,
+					"Before": [0],
+					"Msg": "The girl you let in 3robbed us3. Now there is a man saying 1he comes from the mountain1. His friend 2lost his leg2, he took him to 2ridge city2 to be treated at the 3Green3 1Cross1 hospital.",
+					"opts": [{
+							"opts": "It's true",
+							"effect": 1,
+							"path": 1)
+						}, {
+							"opts": "It's a lie",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "It can be both",
+							"effect": 0,
+							"path": 0
+						}
+					]
+				}, {
+					"Idh": 3,
+					"Order": 2,
+					"Hpath": 0,
+					"Before": [1, 2],
+					"Msg": "He is helping us a lot.A 1wounded1 woman is here and she says she 2survived a massacre2 at 1White Cross1 Hospital. She is looking 2for her child2. Is that true??",
+					"opts": [{
+							"opts": "It’s true",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "It's a Lie",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "It can be both",
+							"effect": 0,
+							"path": 0
+						}
+					]
+				}, {
+					"Idh": 4,
+					"Order": 2,
+					"Hpath": 1,
+					"Before": [1, 2],
+					"Msg": "A friend came asking for him. A 1wounded1 woman is here and she says she 2survived a massacre2 at 1White Cross1 Hospital. She is looking 2for her child2. Is that true?",
+					"opts": [{
+							"opts": "It's true!",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "It can be both",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "It's a lie",
+							"effect": 1,
+							"path": 1
+						}
+					]
+				}, {
+					"Idh": 5,
+					"Order": 3,
+					"Hpath": 0,
+					"Before": [3, 4],
+					"Msg": "We are 2treating her wounds2. But 2we don’t know2 she will survive.",
+					"opts": [{
+							"opts": "Thanks",
+							"effect": 0,
+							"path": 0)
+						}, {
+							"opts": "Maybe is his mother.",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "Take good care other.",
+							"effect": 0,
+							"path": 0
+						}
+					]
+				}, {
+					"Idh": 6,
+					"Order": 3,
+					"Hpath": 1,
+					"Before": [3, 4],
+					"Msg": "Take good care of her.",
+					"opts": [{
+							"opts": "Bastards.!",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "Hope she find a way to survive.",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "....",
+							"effect": 1,
+							"path": 1
+						}
+					]
+				}
+			]
 		}
+	]
 	]
 }
