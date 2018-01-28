@@ -7,6 +7,11 @@ public class CoreLogic : MonoBehaviour
     public OptionButtonLogic[] optionButtons;
     public MessageScrambler messageScrambler;
 
+    private void Awake()
+    {
+        messageScrambler = new MessageScrambler();
+    }
+
     private void Start()
     {
         StaticData.Instance.coreLogic = this;
