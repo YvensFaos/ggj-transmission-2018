@@ -39,12 +39,13 @@ public class StaticData : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Eu!");
         instance = this;
     }
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
         if (DEBUG)
         {
             Random.InitState(666);

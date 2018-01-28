@@ -1152,7 +1152,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 33
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3988,9 +3988,9 @@ MonoBehaviour:
   VignetteRef: {fileID: 114925066290854426}
   isEnabledGlitchEffect: 0
   isEnabledLUT: 0
-  isEnabledVignette: 0
+  isEnabledVignette: 1
   LUTColor: {r: 1, g: 0, b: 0, a: 1}
-  VignetteIntensity: 0.2
+  VignetteIntensity: 0
   ChromaticAberration: 0.1
 --- !u!114 &114943639084621144
 MonoBehaviour:

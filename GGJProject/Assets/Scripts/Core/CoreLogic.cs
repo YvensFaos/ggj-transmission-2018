@@ -15,6 +15,7 @@ public class CoreLogic : MonoBehaviour
     public MessageScrambler messageScrambler;
     public GameMessageNode currentGameMessageNode;
     public CallButtonLogic currentButton;
+    public EffectManager effectManager;
 
     public GameObject chargeScreen;
     public GameObject gameOverScreen;

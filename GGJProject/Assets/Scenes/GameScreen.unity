@@ -240,6 +240,11 @@ Prefab:
       objectReference: {fileID: 348972270}
     - target: {fileID: 114378519425714280, guid: f49b187cdee4f2045a86179b5b672b06,
         type: 2}
+      propertyPath: effectManager
+      value: 
+      objectReference: {fileID: 2079701472}
+    - target: {fileID: 114378519425714280, guid: f49b187cdee4f2045a86179b5b672b06,
+        type: 2}
       propertyPath: chargeScreen
       value: 
       objectReference: {fileID: 2062577698}
@@ -261,6 +266,53 @@ GameObject:
   m_PrefabParentObject: {fileID: 1039391993552986, guid: 297bea6bc881034439760f1b8b995ca3,
     type: 2}
   m_PrefabInternal: {fileID: 2079701467}
+--- !u!1001 &1300207052
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4058690932559946, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058690932559946, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058690932559946, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058690932559946, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058690932559946, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058690932559946, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058690932559946, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058690932559946, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974867270911224, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114307795481114342, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 9c4d7c834baec4d47b0224042708005a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &1406812447 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114378519425714280, guid: f49b187cdee4f2045a86179b5b672b06,
@@ -850,6 +902,37 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114942304547445378, guid: 297bea6bc881034439760f1b8b995ca3,
+        type: 2}
+      propertyPath: isEnabledLUT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942304547445378, guid: 297bea6bc881034439760f1b8b995ca3,
+        type: 2}
+      propertyPath: isEnabledGlitchEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942304547445378, guid: 297bea6bc881034439760f1b8b995ca3,
+        type: 2}
+      propertyPath: LUTColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942304547445378, guid: 297bea6bc881034439760f1b8b995ca3,
+        type: 2}
+      propertyPath: LUTColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942304547445378, guid: 297bea6bc881034439760f1b8b995ca3,
+        type: 2}
+      propertyPath: LUTColor.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 297bea6bc881034439760f1b8b995ca3, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2079701472 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114942304547445378, guid: 297bea6bc881034439760f1b8b995ca3,
+    type: 2}
+  m_PrefabInternal: {fileID: 2079701467}
+  m_Script: {fileID: 11500000, guid: 280bc033bdbe9d04395296201c19a9cb, type: 3}

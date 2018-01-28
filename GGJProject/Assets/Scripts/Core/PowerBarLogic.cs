@@ -25,7 +25,6 @@ public class PowerBarLogic : MonoBehaviour {
         CurrentEnergy = (CurrentEnergy <= 0) ? 0 : CurrentEnergy;
         UpdateEnergy();
 
-        //TODO effect
         if(CurrentEnergy == 0)
         {
             StaticData.Instance.coreLogic.GameOver();
@@ -44,5 +43,10 @@ public class PowerBarLogic : MonoBehaviour {
     void UpdateEnergy()
     {
         EnergyBar.fillAmount = (float) CurrentEnergy / FullEnergy;
+        Debug.Log(StaticData.Instance.coreLogic);
+        Debug.Log(StaticData.Instance.coreLogic.effectManager);
+        Debug.Log(StaticData.Instance.coreLogic.effectManager.VignetteIntensity);
+
+        StaticData.Instance.coreLogic.effectManager.VignetteIntensity = (1 - ((float)CurrentEnergy / FullEnergy)) * 0.8f;
     }
 }

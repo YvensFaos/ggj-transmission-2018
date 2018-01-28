@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using DigitalRuby.SimpleLUT;
+﻿using DigitalRuby.SimpleLUT;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine;
 
 public class EffectManager : MonoBehaviour
 {
-
     private static EffectManager instance;
 
     public static EffectManager Instance
@@ -51,18 +48,14 @@ public class EffectManager : MonoBehaviour
         if (!VignetteRef)
             VignetteRef = GetComponent<VignetteAndChromaticAberration>();
 
-
         GlitchRef.enabled = isEnabledGlitchEffect;
         LUTRef.enabled = isEnabledLUT;
         VignetteRef.enabled = isEnabledVignette;
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         GlitchRef.enabled = isEnabledGlitchEffect;
         LUTRef.enabled = isEnabledLUT;
         VignetteRef.enabled = isEnabledVignette;
@@ -71,6 +64,5 @@ public class EffectManager : MonoBehaviour
 
         VignetteRef.intensity = VignetteIntensity;
         VignetteRef.chromaticAberration = ChromaticAberration;
-
     }
 }
