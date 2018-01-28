@@ -105,11 +105,6 @@ public class MessageBarController : MonoBehaviour
         MessageTimerImage.color = Color.white;
     }
 
-    public void MessageTest(string message)
-    {
-        Debug.Log(message);
-    }
-
     private void LerpBarColor()
     {
         MessageTimerImage.color = Color.Lerp(MessageTimerImage.color, CurrentColor, ColorTransitionSpeed * Time.deltaTime);

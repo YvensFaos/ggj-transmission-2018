@@ -47,12 +47,24 @@ public class CoreLogic : MonoBehaviour
         messageBarController.Restart();
         messageBarController.isActive = true;
 
-        messageNode.reveleadWords++;
         currentGameMessageNode = messageNode;
 
         optionButtons[0].SetGamePhraseOption(messageNode.options[0]);
         optionButtons[1].SetGamePhraseOption(messageNode.options[1]);
         optionButtons[2].SetGamePhraseOption(messageNode.options[2]);
+    }
+
+    public void RepeatMessage()
+    {
+        if(currentGameMessageNode.repeat >= currentGameMessageNode.reveleadWords)
+        {
+            ++currentGameMessageNode.reveleadWords;
+            MessageText.text = messageScrambler.Scramble(currentGameMessageNode);
+        }
+        else
+        {
+            TimedOut();
+        }
     }
 
     public void OptionPicked(GamePhraseOption gamePhraseOption)

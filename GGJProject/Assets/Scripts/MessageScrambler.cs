@@ -24,11 +24,9 @@ public class MessageScrambler
     /// <returns></returns>
     public string Scramble(GameMessageNode messageNode)
     {
-        //public string ScrambleNumbered(string message, int phrasesPerGroup = 1)
-
         string scrambledMessage = messageNode.message;
-        scrambledMessage = ScrambleNumbered(scrambledMessage);
-        //scrambledMessage = ScrambleDelimited(scrambledMessage);
+        scrambledMessage = ScrambleNumbered(scrambledMessage, messageNode.reveleadWords);
+        scrambledMessage = ScrambleDelimited(scrambledMessage, messageNode.reveleadWords - 1);
 
         return scrambledMessage;
     }
@@ -88,7 +86,7 @@ public class MessageScrambler
 
         for (int i = 0; i < count; i++)
         {
-            int point = UnityEngine.Random.Range(0, ret.Length);
+            int point = Random.Range(0, ret.Length);
             if (message[point] == ' ') point++;
             string left = ret.Substring(0, point);
             string right = ret.Substring(point, ret.Length - point);
@@ -196,29 +194,77 @@ public class MessageScrambler
     /// </summary>
     /// <param name="message">the source message</param>
     /// <returns>the encoded message</returns>
-    public string ScrambleDelimited(string message)
+    public string ScrambleDelimited(string message, int revealedWords = 0)
     {
-        List<char[]> delimiters = new List<char[]>
-        {
-            new char[] { '[', ']' },
-            new char[] { '@' }
-        };
+        int countDelimitersAtSymbol = 0;
 
-        string ret = message;
-        foreach (char[] delimiter in delimiters)
+        for (int i = 0; i < message.Length; i++)
         {
-            string[] words = ExtractGroupedWords(message, delimiter);
-            foreach (string word in words)
+            if(message[i] == '@')
             {
-                ret = ret.Replace(word, NOISE);
-            }
-            foreach (char c in delimiter)
-            {
-                ret = ret.Replace(c.ToString(), "");
+                ++countDelimitersAtSymbol;
             }
         }
 
-        return ret;
+        countDelimitersAtSymbol /= 2;
+
+        bool removing = false;
+        bool ignore = false;
+        StringBuilder stringBuilder = new StringBuilder(message);
+        for (int i = 0; i < message.Length; i++)
+        {
+            if (message[i] == '@')
+            {
+                if (removing)
+                {
+                    removing = false;
+                    ignore = false;
+                }
+                else if (!ignore)
+                {
+                    bool remove = false;
+                    if (revealedWords < countDelimitersAtSymbol)
+                    {
+                        if (revealedWords > 0)
+                        {
+                            remove = Random.Range(0, 101) <= 25;
+                        }
+                        else
+                        {
+                            remove = true;
+                        }
+                    }
+                    else
+                    {
+                        remove = false;
+                    }
+
+                    --countDelimitersAtSymbol;
+                    if (remove)
+                    {
+                        removing = true;
+                    }
+                    else
+                    {
+                        --revealedWords;
+                        ignore = true;
+                    }
+                }
+                else if (ignore)
+                {
+                    ignore = false;
+                }
+                stringBuilder[i] = '§';
+            }
+
+            if (removing)
+            {
+                stringBuilder[i] = '~';
+            }
+        }
+
+        stringBuilder.Replace("§", "");
+        return stringBuilder.ToString(); ;
     } // ScrambleDelimited
 
     /// <summary>

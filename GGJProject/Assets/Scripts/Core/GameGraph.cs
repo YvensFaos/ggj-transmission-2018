@@ -55,7 +55,7 @@ public class GameMessageNode : IComparable<GameMessageNode>
         alreadyAdded = false;
         wasPlayed = false;
 
-        reveleadWords = repeat;
+        reveleadWords = 1;
         StaticData.Instance.Log("Created node: " + index + " " + order + " " + hpath + " " + message);
     }
 
