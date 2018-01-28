@@ -69,6 +69,12 @@ public class CoreLogic : MonoBehaviour
         optionButtons[2].BlankGamePhraseOption();
     }
 
+    public void TimedOut()
+    {
+        int randomOption = Random.Range(0, 3);
+        OptionPicked(optionButtons[randomOption].gamePhraseOption);
+    }
+
     public void ScoreOption(GamePhraseOption gamePhraseOption)
     {
         if(gamePhraseOption.effect == 0)

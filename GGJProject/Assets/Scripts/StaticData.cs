@@ -56,7 +56,7 @@ public class StaticData : MonoBehaviour
         //PlayerInteract = PlayerRef.GetComponentInChildren<BaseInteractScript>();
         //TODO
         DontDestroyOnLoad(this);
-        Random.InitState(666);
+       // Random.InitState(666);
     }
 
     /// <summary>

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class MessageScrambler
 {
     private const string noise = "~~~~";
+
     public static string NOISE
     {
         get
@@ -23,7 +24,13 @@ public class MessageScrambler
     /// <returns></returns>
     public string Scramble(GameMessageNode messageNode)
     {
-        return messageNode.message;
+        //public string ScrambleNumbered(string message, int phrasesPerGroup = 1)
+
+        string scrambledMessage = messageNode.message;
+        scrambledMessage = ScrambleNumbered(scrambledMessage);
+        //scrambledMessage = ScrambleDelimited(scrambledMessage);
+
+        return scrambledMessage;
     }
 
     /// <summary>
@@ -103,41 +110,85 @@ public class MessageScrambler
     /// <returns>the encoded message</returns>
     public string ScrambleNumbered(string message, int phrasesPerGroup = 1)
     {
-        string ret = message;
-
-        for (char c = '1'; c <= '9'; c++)
+        int[] foundsCases = new int[10];
+        int numericalValue = -1;
+        for (int i = 0; i < message.Length; i++)
         {
-            string[] words = ExtractGroupedWords(ret, c);
-            if (words.Length == 0) continue;
-
-            // Choose the phrasesPerGroup random phrases to be coded.
-            List<int> indexesToRemove = new List<int>();
-            List<int> availableIndexes = new List<int>(words.Length);
-            for (int i = 0; i < words.Length; i++) availableIndexes.Add(i);
-            if (phrasesPerGroup < words.Length)
+            numericalValue = (int)char.GetNumericValue(message[i]);
+            if (numericalValue >= 0 && numericalValue <= 9)
             {
-                for (int i = 0; i < phrasesPerGroup; i++)
-                {
-                    int randomIndex = UnityEngine.Random.Range(0, availableIndexes.Count);
-                    indexesToRemove.Add(availableIndexes[randomIndex]);
-                    availableIndexes.RemoveAt(randomIndex);
-                }
-            }
-            else
-            {
-                phrasesPerGroup = words.Length;
-                for (int i = 0; i < words.Length; i++) indexesToRemove.Add(i);
-            }
-
-            foreach (int indexToRemove in indexesToRemove)
-            {
-                string word = words[indexToRemove];
-                ret = ret.Replace(word, NOISE);
-                ret = ret.Replace(c.ToString(), "");
+                foundsCases[numericalValue]++;
             }
         }
 
-        return ret;
+        for (int i = 0; i < foundsCases.Length; i++)
+        {
+            foundsCases[i] /= 2;
+        }
+
+        int[] safeWords = new int[10];
+        for (int i = 0; i < foundsCases.Length; i++)
+        {
+            safeWords[i] = (foundsCases[i] != 0) ? phrasesPerGroup : 0;
+        }
+
+        bool removing = false;
+        bool ignore = false;
+        StringBuilder stringBuilder = new StringBuilder(message);
+        for (int i = 0; i < message.Length; i++)
+        {
+            numericalValue = (int)char.GetNumericValue(message[i]);
+            if (numericalValue >= 0 && numericalValue <= 9)
+            {
+                if (removing)
+                {
+                    removing = false;
+                    ignore = false;
+                }
+                else if (!ignore)
+                {
+                    bool remove = false;
+                    if (safeWords[numericalValue] < foundsCases[numericalValue])
+                    {
+                        if (safeWords[numericalValue] > 0)
+                        {
+                            remove = Random.Range(0, 101) <= 25;
+                        }
+                        else
+                        {
+                            remove = true;
+                        }
+                    }
+                    else
+                    {
+                        remove = false;
+                    }
+
+                    --foundsCases[numericalValue];
+                    if (remove)
+                    {
+                        removing = true;
+                    }
+                    else
+                    {
+                        --safeWords[numericalValue];
+                        ignore = true;
+                    }
+                }
+                else if (ignore)
+                {
+                    ignore = false;
+                }
+                stringBuilder[i] = '§';
+            }
+            if (removing)
+            {
+                stringBuilder[i] = '~';
+            }
+        }
+
+        stringBuilder.Replace("§", "");
+        return stringBuilder.ToString(); ;
     } // ScrambleNumbered
 
     /// <summary>

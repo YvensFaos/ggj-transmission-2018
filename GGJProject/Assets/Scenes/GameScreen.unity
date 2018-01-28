@@ -2026,7 +2026,7 @@ Prefab:
     - target: {fileID: 114624924914276976, guid: 70f2bca897fda9b4989b02eaa4c523c4,
         type: 2}
       propertyPath: EventsListener.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114624924914276976, guid: 70f2bca897fda9b4989b02eaa4c523c4,
         type: 2}
@@ -2037,11 +2037,11 @@ Prefab:
         type: 2}
       propertyPath: EventsListener.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1909745084}
+      objectReference: {fileID: 1406812447}
     - target: {fileID: 114624924914276976, guid: 70f2bca897fda9b4989b02eaa4c523c4,
         type: 2}
       propertyPath: EventsListener.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MessageTest
+      value: TimedOut
       objectReference: {fileID: 0}
     - target: {fileID: 114624924914276976, guid: 70f2bca897fda9b4989b02eaa4c523c4,
         type: 2}
@@ -2287,6 +2287,12 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224986465666613144, guid: edd03f3c52d042c48bcdc41b6c50caea,
     type: 2}
   m_PrefabInternal: {fileID: 1299314059}
+--- !u!114 &1406812447 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114378519425714280, guid: f49b187cdee4f2045a86179b5b672b06,
+    type: 2}
+  m_PrefabInternal: {fileID: 1112069913}
+  m_Script: {fileID: 11500000, guid: 72d7218df24e8de468540e7859b52098, type: 3}
 --- !u!1 &1469094285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,7 +3288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30.000057, y: -29.999966}
+  m_AnchoredPosition: {x: -30, y: -29.999939}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759708578
