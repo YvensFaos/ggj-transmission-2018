@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 using UnityEngine;
@@ -18,50 +19,55 @@ public class GamePhraseOption
     }
 }
 
-[System.Serializable]
-public class GameNode
-{
-    public string phrase;
-    public string scrambledPhrase;
-    public GamePhraseOption[] options;
-    public List<GameNode> nodes;
-
-    public GameNode(string phrase, GamePhraseOption[] options)
-    {
-        this.phrase = phrase;
-        this.options = new GamePhraseOption[options.Length];
-        for (int i = 0; i < options.Length; i++)
-        {
-            this.options[i] = options[i];
-        }
-
-        //TODO call scramble note
-    }
-}
-
 /// <summary>
 ///
 /// </summary>
 [System.Serializable]
-public class GameMessageNode
+public class GameMessageNode : IComparable<GameMessageNode>
 {
     public int index;
     public int order;
     public int hpath;
+    public int repeat;
     public string message;
     public GamePhraseOption[] options;
     public List<GameMessageNode> nodes;
+    public List<GameMessageNode> parents;
 
-    public GameMessageNode(int index, int order, int hpath, string message)
+    public float callTime;
+    public bool isActive;
+    public bool alreadyAdded;
+
+    public int reveleadWords;
+
+    public GameMessageNode(int index, int order, int hpath, int repeat, string message)
     {
         this.index = index;
         this.order = order;
         this.hpath = hpath;
+        this.repeat = repeat;
         this.message = message;
         options = new GamePhraseOption[3];
         nodes = new List<GameMessageNode>();
+        parents = new List<GameMessageNode>();
+        isActive = false;
+        alreadyAdded = false;
 
-        Debug.Log("Created node: " + index + " " + order + " " + hpath + " " + message);
+        reveleadWords = repeat;
+        StaticData.Instance.Log("Created node: " + index + " " + order + " " + hpath + " " + message);
+    }
+
+    public int CompareTo(GameMessageNode other)
+    {
+        return callTime.CompareTo(other.callTime);
+    }
+
+    public void Activate()
+    {
+        isActive = true;
+        StaticData.Instance.coreLogic.ActivateMessage(this);
+
+        //TODO ring a phone! :)
     }
 }
 
@@ -93,6 +99,7 @@ public class GameStory
         int index;
         int order;
         int hpath;
+        int repeat;
 
         orderedNodes = new GameMessageNode[jsons.Count];
 
@@ -101,20 +108,28 @@ public class GameStory
             index = (int)obj["Idh"].i;
             order = (int)obj["Order"].i;
             hpath = (int)obj["Hpath"].i;
+            repeat = 1;
+
+            if(obj.HasField("Repeat"))
+            {
+                repeat = (int)obj["Repeat"].i;
+            }
+
             parentsJSON = obj["Before"].list;
 
             if (root == null)
             {
-                root = new GameMessageNode(index, order, hpath, obj["Msg"].str);
+                root = new GameMessageNode(index, order, hpath, repeat, obj["Msg"].str);
                 orderedNodes[0] = root;
                 pointer = root;
             }
             else
             {
-                GameMessageNode newMessageNode = new GameMessageNode(index, order, hpath, obj["Msg"].str);
+                GameMessageNode newMessageNode = new GameMessageNode(index, order, hpath, repeat, obj["Msg"].str);
                 for (int i = 0; i < parentsJSON.Count; i++)
                 {
                     orderedNodes[(int)parentsJSON[i].i].nodes.Add(newMessageNode);
+                    newMessageNode.parents.Add(orderedNodes[(int)parentsJSON[i].i]);
                 }
                 orderedNodes[index] = newMessageNode;
                 pointer = newMessageNode;
@@ -128,15 +143,122 @@ public class GameStory
     }
 }
 
+[System.Serializable]
+public class GameTimeline
+{
+    public GameStory[] stories;
+    public float clock;
+    public float minimalInterval = 1.0f;
+    public float maximumInterval = 5.0f;
+    public bool isActive;
+    private bool hasFinished;
+
+    public bool HasFinished
+    {
+        get
+        {
+            return hasFinished;
+        }
+
+        private set
+        {
+            hasFinished = value;
+        }
+    }
+
+    public List<GameMessageNode> timedNodes;
+
+    private int currentIndex;
+
+    public GameTimeline(int[] storyIndexes, GameStory[] stories)
+    {
+        this.stories = new GameStory[storyIndexes.Length];
+        for (int i = 0; i < storyIndexes.Length; i++)
+        {
+            this.stories[i] = stories[storyIndexes[i]];
+        }
+
+        timedNodes = new List<GameMessageNode>();
+        Queue<GameMessageNode> messageNodeQueue = new Queue<GameMessageNode>();
+
+        //Set tutorial story
+        GameStory tutorial = this.stories[0];
+        messageNodeQueue.Enqueue(tutorial.root);
+        GameMessageNode msgPointer;
+
+        float callTime = 0.0f;
+        float tutorialMinimalInterval = 2.0f;
+        float tutorialMaximumInterval = 3.2f;
+        while (messageNodeQueue.Count > 0)
+        {
+            msgPointer = messageNodeQueue.Dequeue();
+            if (!msgPointer.alreadyAdded)
+            {
+
+                callTime = UnityEngine.Random.Range(tutorialMinimalInterval, tutorialMaximumInterval);
+                if (msgPointer.parents.Count > 0)
+                {
+                    callTime += msgPointer.parents[0].callTime;
+                }
+
+                msgPointer.callTime = callTime;
+                msgPointer.alreadyAdded = true;
+                timedNodes.Add(msgPointer);
+
+                foreach (GameMessageNode msgNode in msgPointer.nodes)
+                {
+                    if (!msgNode.alreadyAdded)
+                    {
+                        messageNodeQueue.Enqueue(msgNode);
+                    }
+                }
+            }
+        }
+
+        timedNodes.Sort();
+
+        float startTime = timedNodes[timedNodes.Count - 1].callTime + UnityEngine.Random.Range(minimalInterval, maximumInterval);
+
+        //Set another stories
+        GameStory pointer;
+        for (int i = 1; i < storyIndexes.Length; i++)
+        {
+            pointer = this.stories[i];
+        }
+
+        isActive = false;
+        currentIndex = 0;
+    }
+
+    public void Update()
+    {
+        clock += Time.deltaTime;
+
+        if (clock >= timedNodes[currentIndex].callTime)
+        {
+            timedNodes[currentIndex].Activate();
+            ++currentIndex;
+            if (currentIndex > timedNodes.Count)
+            {
+                isActive = false;
+                hasFinished = true;
+            }
+        }
+    }
+}
+
 public class GameGraph : MonoBehaviour
 {
-    public GameNode rootNode;
+    public GameTimeline timeline;
     public GameStory[] stories;
+
     public static string gameJsonFile = "gameStories0.json";
+    public static int maxStoriesSize = 1;//5;
 
     private void Awake()
     {
         InitGameGraph();
+        StaticData.Instance.gameGraph = this;
     }
 
     private void InitGameGraph()
@@ -149,10 +271,32 @@ public class GameGraph : MonoBehaviour
         List<JSONObject> jsons = mainObject.list[0].list;
         stories = new GameStory[jsons.Count];
 
+        StaticData.Instance.Log("Reading JSON file.");
+
         int i = 0;
         foreach (JSONObject obj in jsons)
         {
             stories[i] = new GameStory(obj["StoryName"].str, (int)obj["StoryID"].i, obj);
         }
+
+        StaticData.Instance.Log("Generating Game Graph.");
+        int[] storyIndexes = new int[maxStoriesSize];
+        storyIndexes[0] = 0;
+
+        timeline = new GameTimeline(storyIndexes, stories);
+        timeline.isActive = true;
+    }
+
+    private void Update()
+    {
+        if (timeline.isActive)
+        {
+            timeline.Update();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        StaticData.Instance.gameGraph = null;
     }
 }
