@@ -32,3 +32,5 @@
 # Builds
 *.apk
 *.unitypackage
+
+GGJProject/Assets/\.DS_Store
