@@ -44,7 +44,7 @@ public class StaticData : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
         if (DEBUG)
         {
             Random.InitState(666);
