@@ -14,24 +14,22 @@ public class PlayMusic : MonoBehaviour {
 
     private void Start()
     {
-        if (!SoundManager.Instance.GetActualMusic().Equals(MusicName))
+        if(SoundManager.Instance != null)
         {
-            SoundManager.Instance.PlayMusic(MusicName);
-        }
+            if (!SoundManager.Instance.GetActualMusic().Equals(MusicName))
+            {
+                SoundManager.Instance.PlayMusic(MusicName);
+            }
 
-        if (SoundManager.Instance.MusicSource.volume != Volume)
-        {
-            SoundManager.Instance.MusicSource.volume = Volume;
-        }
+            if (SoundManager.Instance.MusicSource.volume != Volume)
+            {
+                SoundManager.Instance.MusicSource.volume = Volume;
+            }
 
-        //if (SoundManager.Instance.MusicSource.dopplerLevel != DopplerLevel)
-        //{
-        //    SoundManager.Instance.MusicSource.dopplerLevel = DopplerLevel;
-        //}
-
-        if (SoundManager.Instance.MusicSource.pitch != Pitch)
-        {
-            SoundManager.Instance.MusicSource.pitch = Pitch;
+            if (SoundManager.Instance.MusicSource.pitch != Pitch)
+            {
+                SoundManager.Instance.MusicSource.pitch = Pitch;
+            }
         }
 
         if (DestroyAfter)
