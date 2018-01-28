@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
 [RequireComponent(typeof(Text))]
 public class OptionButtonLogic : MonoBehaviour
 {
-    public string OptionMessage;
     public Text OptionText;
+    public GamePhraseOption gamePhraseOption;
 
     void Start()
     {
@@ -20,5 +18,11 @@ public class OptionButtonLogic : MonoBehaviour
 
     void Update()
     {
+    }
+
+    public void SetGamePhraseOption(GamePhraseOption gamePhraseOption)
+    {
+        this.gamePhraseOption = gamePhraseOption;
+        OptionText.text = gamePhraseOption.optionPhrase;
     }
 }
