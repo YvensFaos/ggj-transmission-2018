@@ -57,6 +57,7 @@ MonoBehaviour:
     clock: 0
     minimalInterval: 0
     maximumInterval: 0
+    initialMaximumInterval: 0
     isActive: 0
     isWaiting: 0
     timedNodes: []
@@ -97,6 +98,7 @@ MonoBehaviour:
     isActive: 0
     alreadyAdded: 0
     wasPlayed: 0
+    isTutorialNode: 0
     reveleadWords: 0
   currentButton: {fileID: 0}
   chargeScreen: {fileID: 0}

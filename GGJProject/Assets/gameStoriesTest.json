@@ -581,6 +581,151 @@
 					]
 				}
 			]
+		}, {
+			"StoryName": "Template",
+			"StoryID": 15,
+			"Messages": [{
+					"Idh": 0,
+					"Order": 0,
+					"Hpath": 0,
+					"Before": [-1],
+					"Msg": "Hello. Is from the station? I’m 3taking care3 1of a group of people1. I need to 1find food1 2as soon as possible2. We are at 3Stallion3 2Gas station2.?",
+					"opts": [{
+							"opts": "Go to Pleasantville.",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "Travel to Saint Church of Glory.",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "Go to White Church Hospital.",
+							"effect": 1,
+							"path": 1
+						}
+					]
+				}, {
+					"Idh": 1,
+					"Order": 1,
+					"Hpath": 0,
+					"Before": [0],
+					"Msg": "Thanks. I 1found the food1. But I 1saved more people1.It may 2draw too much attention2. I need 2a safe route2 to the Ridge City.",
+					"opts": [{
+							"opts": "Go through the woods.",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "Find a vehicle at Fox gas Station.",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "Take the Southside Road",
+							"effect": 1,
+							"path": 1
+						}
+					]
+				}, {
+					"Idh": 2,
+					"Order": 1,
+					"Hpath": 1,
+					"Before": [0],
+					"Msg": "I found the food. But 1three men1 2are guarding it2. I have 1a rifle1, but I 2just hunt2 with it. Any advice?",
+					"opts": [{
+							"opts": "Go to a high position and shoot them.",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "Ask them if they can share a little.",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "Shoot them before they see you.",
+							"effect": 1,
+							"path": 1
+						}
+					]
+				}, {
+					"Idh": 3,
+					"Order": 2,
+					"Hpath": 0,
+					"Before": [1, 2],
+					"Msg": "The place is 1safe1 and we 1shared the food1. But I don’t know the 2faster way2 to 2return home2",
+					"opts": [{
+							"opts": "Travel through Southside Road",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "Take the Westside road.",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "Go through the woods",
+							"effect": 1,
+							"path": 1
+						}
+					]
+				}, {
+					"Idh": 4,
+					"Order": 2,
+					"Hpath": 1,
+					"Before": [1, 2],
+					"Msg": "There were 1more people there1. They shoot at me. I Killed them 2but I’m wounded2.I need the 2safer way2 1home1.",
+					"opts": [{
+							"opts": "Travel through Berkeley.",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "Travel to Central Road.",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "Follow Southside Road.",
+							"effect": 0,
+							"path": 0
+						}
+					]
+				}, {
+					"Idh": 5,
+					"Order": 3,
+					"Hpath": 0,
+					"Before": [3, 4],
+					"Msg": "I 1made1 it with 1enough food1. We 3will3 2survive this2. God 3bless you3.",
+					"opts": [{
+							"opts": "Be safe",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "Thanks",
+							"effect": 0,
+							"path": 0
+						}, {
+							"opts": "I was glad to help",
+							"effect": 0,
+							"path": 0
+						}
+					]
+				}, {
+					"Idh": 6,
+					"Order": 3,
+					"Hpath": 1,
+					"Before": [3, 4],
+					"Msg": "I was 1ambushed1. I’m 2fighting2 them. But I 1don’1t believe I will make it. Please call Stallion Station and say 2i am sorry2.",
+					"opts": [{
+							"opts": "You are a good man",
+							"effect": Pontuação 0(bom)ou 1(ruim),
+							"path": Caminho 0(azul - bom)caminho 1(ruim)
+						}, {
+							"opts": "You did your best",
+							"effect": 1,
+							"path": 1
+						}, {
+							"opts": "I will",
+							"effect": 1,
+							"path": 1
+						}
+					]
+				}
+			]
 		}
 	]
 }
