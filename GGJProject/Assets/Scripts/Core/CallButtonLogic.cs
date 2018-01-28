@@ -55,7 +55,12 @@ public class CallButtonLogic : MonoBehaviour {
         switch (CurrentCallState)
         {
             case CallState.CALLING:
-                StaticData.Instance.coreLogic.ActivateMessage(messageNode);
+                if(StaticData.Instance.coreLogic.currentButton != null && StaticData.Instance.coreLogic.currentButton != this)
+                {
+                    StaticData.Instance.coreLogic.currentButton.ChangeCallState(CallState.WAITING);
+                    //TODO add logic that activates the bad answers for this call.
+                }
+                StaticData.Instance.coreLogic.ActivateMessage(this, messageNode);
                 ChangeCallState(CallState.ANSWERING);
                 break;
             default:

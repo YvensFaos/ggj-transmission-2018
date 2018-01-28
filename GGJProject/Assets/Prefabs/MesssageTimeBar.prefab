@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  NewMessageTimer: 120
+  NewMessageTimer: 20
   NewMessageTimeFactor: 1
   FullTimeColor: {r: 0, g: 1, b: 0.21379304, a: 1}
   MediumTimeColor: {r: 1, g: 0.9724138, b: 0, a: 1}

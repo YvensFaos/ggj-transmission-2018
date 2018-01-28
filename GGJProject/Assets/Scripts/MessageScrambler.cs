@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class MessageScrambler
 {
-    private const string NOISE = "~~~~";
+    private const string noise = "~~~~";
+    public static string NOISE
+    {
+        get
+        {
+            return noise;
+        }
+    }
 
     private Dictionary<string, string> noiseDictionary;
 

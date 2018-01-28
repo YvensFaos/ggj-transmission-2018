@@ -37,6 +37,7 @@ public class GameMessageNode : IComparable<GameMessageNode>
     public float callTime;
     public bool isActive;
     public bool alreadyAdded;
+    public bool wasPlayed;
 
     public int reveleadWords;
 
@@ -52,6 +53,7 @@ public class GameMessageNode : IComparable<GameMessageNode>
         parents = new List<GameMessageNode>();
         isActive = false;
         alreadyAdded = false;
+        wasPlayed = false;
 
         reveleadWords = repeat;
         StaticData.Instance.Log("Created node: " + index + " " + order + " " + hpath + " " + message);
@@ -65,9 +67,7 @@ public class GameMessageNode : IComparable<GameMessageNode>
     public void Activate()
     {
         isActive = true;
-        StaticData.Instance.coreLogic.ActivateMessage(this);
-
-        //TODO ring a phone! :)
+        StaticData.Instance.coreLogic.CallPhone(this);
     }
 }
 
@@ -110,7 +110,7 @@ public class GameStory
             hpath = (int)obj["Hpath"].i;
             repeat = 1;
 
-            if(obj.HasField("Repeat"))
+            if (obj.HasField("Repeat"))
             {
                 repeat = (int)obj["Repeat"].i;
             }
@@ -151,6 +151,7 @@ public class GameTimeline
     public float minimalInterval = 1.0f;
     public float maximumInterval = 5.0f;
     public bool isActive;
+    public bool isWaiting;
     private bool hasFinished;
 
     public bool HasFinished
@@ -186,7 +187,6 @@ public class GameTimeline
         messageNodeQueue.Enqueue(tutorial.root);
         GameMessageNode msgPointer;
 
-        float callTime = 0.0f;
         float tutorialMinimalInterval = 2.0f;
         float tutorialMaximumInterval = 3.2f;
         while (messageNodeQueue.Count > 0)
@@ -194,17 +194,8 @@ public class GameTimeline
             msgPointer = messageNodeQueue.Dequeue();
             if (!msgPointer.alreadyAdded)
             {
-
-                callTime = UnityEngine.Random.Range(tutorialMinimalInterval, tutorialMaximumInterval);
-                if (msgPointer.parents.Count > 0)
-                {
-                    callTime += msgPointer.parents[0].callTime;
-                }
-
-                msgPointer.callTime = callTime;
+                msgPointer.callTime = UnityEngine.Random.Range(tutorialMinimalInterval, tutorialMaximumInterval);
                 msgPointer.alreadyAdded = true;
-                timedNodes.Add(msgPointer);
-
                 foreach (GameMessageNode msgNode in msgPointer.nodes)
                 {
                     if (!msgNode.alreadyAdded)
@@ -214,8 +205,7 @@ public class GameTimeline
                 }
             }
         }
-
-        timedNodes.Sort();
+        timedNodes.Add(tutorial.root);
 
         float startTime = timedNodes[timedNodes.Count - 1].callTime + UnityEngine.Random.Range(minimalInterval, maximumInterval);
 
@@ -224,24 +214,54 @@ public class GameTimeline
         for (int i = 1; i < storyIndexes.Length; i++)
         {
             pointer = this.stories[i];
+
+            //TODO
         }
 
+        timedNodes.Sort();
+
         isActive = false;
+        isWaiting = false;
         currentIndex = 0;
+    }
+
+    public void CallNextEvent(GameMessageNode messageNode, GamePhraseOption gamePhraseOption)
+    {
+        GameMessageNode nextMessage;
+        int i = 0;
+        do
+        {
+            nextMessage = messageNode.nodes[i];
+            if(nextMessage.hpath == gamePhraseOption.path)
+            {
+                break;
+            }
+        } while (++i < messageNode.nodes.Count);
+
+        messageNode.isActive = false;
+        messageNode.wasPlayed = true;
+
+        nextMessage.callTime = clock + UnityEngine.Random.Range(minimalInterval, maximumInterval);
+        nextMessage.alreadyAdded = true;
+
+        timedNodes.Add(nextMessage);
+        //TODO adicionar método que remove todas as mensagens que foram jogadas
+        timedNodes.Sort();
+
+        isWaiting = false;
     }
 
     public void Update()
     {
         clock += Time.deltaTime;
 
-        if (clock >= timedNodes[currentIndex].callTime)
+        if (!isWaiting && clock >= timedNodes[currentIndex].callTime)
         {
             timedNodes[currentIndex].Activate();
             ++currentIndex;
-            if (currentIndex > timedNodes.Count)
+            if (currentIndex >= timedNodes.Count)
             {
-                isActive = false;
-                hasFinished = true;
+                isWaiting = true;
             }
         }
     }

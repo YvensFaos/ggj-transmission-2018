@@ -58,6 +58,7 @@ MonoBehaviour:
     minimalInterval: 0
     maximumInterval: 0
     isActive: 0
+    isWaiting: 0
     timedNodes: []
   stories: []
 --- !u!114 &114378519425714280
@@ -72,11 +73,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MessageText: {fileID: 0}
+  messageBarController: {fileID: 0}
   optionButtons:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  callButtonLogic:
+  callButtons:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

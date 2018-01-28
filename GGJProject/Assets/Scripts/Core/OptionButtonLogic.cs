@@ -7,6 +7,7 @@ public class OptionButtonLogic : MonoBehaviour
 {
     public Text OptionText;
     public GamePhraseOption gamePhraseOption;
+    public bool isActive;
 
     void Start()
     {
@@ -14,15 +15,28 @@ public class OptionButtonLogic : MonoBehaviour
         {
             OptionText = GetComponent<Text>();
         }
-    }
-
-    void Update()
-    {
+        BlankGamePhraseOption();
     }
 
     public void SetGamePhraseOption(GamePhraseOption gamePhraseOption)
     {
         this.gamePhraseOption = gamePhraseOption;
         OptionText.text = gamePhraseOption.optionPhrase;
+        isActive = true;
+    }
+
+    public void BlankGamePhraseOption()
+    {
+        gamePhraseOption = null;
+        OptionText.text = MessageScrambler.NOISE;
+        isActive = false;
+    }
+
+    public void PickMe()
+    {
+        if(isActive)
+        {
+            StaticData.Instance.coreLogic.OptionPicked(gamePhraseOption);
+        }
     }
 }
