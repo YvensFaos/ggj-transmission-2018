@@ -114,6 +114,7 @@ public class CoreLogic : MonoBehaviour
         else
         {
             NegativeScore += DefaultScoreValue;
+            effectManager.UpdateGlitch(NegativeScore);
         }
     }
 
